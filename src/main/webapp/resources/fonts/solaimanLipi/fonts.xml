@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+ 
+    <fontFamily name="SolaimanLipi">
+        <normal>net/sf/jasperreports/fonts/SolaimanLipi.ttf</normal>
+        <bold>net/sf/jasperreports/fonts/SolaimanLipi.ttf</bold>
+        <italic>net/sf/jasperreports/fonts/SolaimanLipi.ttf</italic>
+        <boldItalic>net/sf/jasperreports/fonts/SolaimanLipi.ttf</boldItalic>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+        <exportFonts>
+            <export key="net.sf.jasperreports.html">'Solaiman Lipi'</export>
+        </exportFonts>
+
+    </fontFamily>
+</fontFamilies>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition name="DefaultTemplate" template="/WEB-INF/jsp/template/SiteTemplate.jsp">
+        <put-attribute name="title" value="Home" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/header.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/jsp/template/sidebar.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/template/footer.jsp" />
+    </definition>
+    <definition name="CustomTemplate"
+                template="/WEB-INF/jsp/template/HTTPErrorTemplate.jsp">
+        <put-attribute name="error" value="" />
+    </definition>
+    <definition name="myLoginTemplate"
+                template="/WEB-INF/jsp/template/LoginTemplate.jsp">
+        <put-attribute name="loginPage" value="" />      
+    </definition>
+    <definition name="ApplicantTemplate"
+                template="/WEB-INF/jsp/template/ApplicantTemplate.jsp">
+        <put-attribute name="body" value="" />      
+    </definition>
+    <definition name="PublicSiteTemplate" template="/WEB-INF/jsp/template/PublicSiteTemplate.jsp">
+        <put-attribute name="title" value="Home" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/publicHeader.jsp" />
+        <put-attribute name="sidebar" value="/WEB-INF/jsp/template/sidebar.jsp" />
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/jsp/template/publicFooter.jsp" />    
+    </definition>
+    <definition name="PrintTemplate"
+                template="/WEB-INF/jsp/template/PrintPageTemplate.jsp">
+        <put-attribute name="body" value="" />
+    </definition>
+</tiles-definitions>

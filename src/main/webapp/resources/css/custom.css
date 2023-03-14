@@ -1,0 +1,178 @@
+/*remove all rounded border*/
+input, select, button, a, textarea {
+    border-radius: 0 !important;
+}
+.content{
+    margin: 10px 20px 0px;
+    background: #FFF !important;
+}
+.box
+{
+    border: 1px solid #d2d6de;
+}
+.box-header
+{
+    background-color: #EEE;
+}
+.content-header > h1 > small {
+    color: #0076BB;
+    font-weight: normal;
+    margin-left: 6px;
+}
+.content-header > h1 > small .fa-arrow-circle-left {
+    font-size: 14px;
+    margin-right: 1px;
+}
+.fa {
+    padding-right: 5px !important;
+}
+.alert {
+    margin-bottom: 0 !important;
+}
+@font-face {
+    font-family: 'SolaimanLipi';
+    src: url('/imlma/resources/fonts/SolaimanLipi.ttf');            
+}
+
+body{
+    font-family:  'SolaimanLipi', 'Nikosh', 'Segoe UI';
+    background-color: #EEE;
+}
+
+h1,h2,h3,h4,h5, h6{
+    font-family: 'SolaimanLipi';
+}
+
+.main-header .logo{
+    font-family: 'SolaimanLipi';
+}
+.info-box-text{
+    font-size: 16px;
+}
+
+legend{
+    background-color: #EEE;
+    padding-left: 10px;
+    border-bottom: 0 !important;
+}
+
+/*Datatable first column sort icon removal*/
+table.dataTable thead .sorting_asc:after{
+    content:"";
+}
+/*Datatable search summary info color*/
+.dataTables_info{
+    color: #005F98;
+}
+/*Datatable processing text color*/
+.dataTables_wrapper .dataTables_processing {
+    color:green;
+}
+/*Datatable alternale row color*/
+.table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
+    /*background-color: #F5F5F5;*/
+    background-color: #EEE;
+}
+/*Datatable header background color*/
+.table > thead > tr> th {
+    background-color: #445e69;
+    font-weight: 400;
+    color: #b3d1de;       
+}
+/*Overrides this css to reduce form-group element space*/
+.form-group {
+    margin-bottom: 8px;
+}
+/*Datatable row hover background color*/
+.table > tbody > tr:hover td{
+    background-color: #E4F5FF !important;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}  
+
+.box {
+    border-radius: 6px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.21);
+    border: 0!important;
+/*    border:1px solid #3c8dbc;*/
+/*border:1px solid lightgray;*/
+}
+.skin-blue .content-header {
+    background: #ffffff;
+    padding-bottom: 15px;    
+}
+
+.round_button {
+    border-radius: 50px !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.content {
+    background: transparent;
+}
+/*.skin-blue .main-header .logo {
+    background-color: #2e6da4;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #337ab7;
+}*/
+/* button bg-color*/
+.bg-blue{
+    background-color: #2583b9 !important;
+}
+
+.one-column-legend{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.one-column-left-legend{
+    padding-left: 0px;
+}
+.one-column-right-legend{
+    padding-right: 0px;
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 1400px) {
+    #dept-name{padding-left: 15% !important;}
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 1200px) {
+    #dept-name{padding-left: 10% !important;}
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width : 900px) {
+    #dept-name{padding-left: 5% !important;}
+    .sidebar {
+        margin-top: 50px !important;
+    }
+    .main-header .logo {
+        padding-bottom: 75px !important;
+        padding-top: 25px !important;
+    }
+}
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    #dept-name{padding-left: 5% !important;}
+    .sidebar {
+        margin-top: 50px !important;
+    }
+}
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+    #dept-name{padding-left: 5% !important;}
+    .sidebar {
+        margin-top: 100px !important;
+    }
+}

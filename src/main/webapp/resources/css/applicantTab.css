@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 2, 2017, 11:31:51 AM
+    Author     : PCUser
+*/
+img{
+    /*padding-bottom: 5px;*/
+}
+
+
+.wrapper {
+    position: relative !important ;
+}
+.wrapper .nf-container-inner {
+    overflow:visible !important;
+}
+.ms-formbody .tab{
+    position: absolute ;
+    top: 0 !important;
+}
+#crumbs ol {
+    list-style: none; display: block;
+}
+#crumbs ol li {
+    background: rgb(242, 242, 242); margin: 0px 12px; display: inline-block; 
+}
+#crumbs ol li a {
+    margin: 0px 20px 0px 0px; padding: 5px 0px 15px 10px; /*width: 130px;*/ height: 38px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; text-decoration: none; float: left; display: block; position: relative;
+}
+#crumbs ol li a br {
+    color: rgb(255, 255, 255);
+}
+#crumbs ol li a .title {
+    line-height: 18pt; font-size: 15px; font-weight: bold;
+}
+#crumbs ol li a::after {
+    top: 0px; right: -40px; border-top-color: transparent; border-bottom-color: transparent; border-left-color: rgb(242, 242, 242); border-top-width: 19px; border-bottom-width: 19px; border-left-width: 20px; border-top-style: solid; border-bottom-style: solid; border-left-style: solid; position: absolute; z-index: 1; content: "";
+}
+#crumbs ol li a::before {
+    left: 0px; top: 0px; position: absolute; content: "";
+}
+#crumbs ol li:hover {
+    background: rgb(0, 158, 224); color: rgb(255, 255, 255);
+}
+#crumbs ol li a:hover::after {
+    border-left-color: rgb(0, 158, 224);
+}
+#crumbs ol li.selected {
+    background: #3c8dbc;
+}
+#crumbs ol li.selected {
+    color: rgb(255, 255, 255);
+}
+#crumbs ol li.selected a {
+    color: rgb(255, 255, 255);
+}
+#crumbs ol li.selected a::after {
+    border-left-color: #3c8dbc;
+}
+ol.simple-list {
+    list-style-type: none; counter-reset: ol-counter;
+}
+ol.simple-list > li::before {
+    /*content: counter(ol-counter); counter-increment: ol-counter;*/
+}
+ol.simple-list > li:hover::before {
+    color: rgb(255, 255, 255);
+}
+ol.simple-list > li.selected::before {
+    color: rgb(255, 255, 255);
+}
+ol.simple-list {
+    padding: 0px; list-style-type: none; /*counter-reset: li-counter;*/
+}
+ol.simple-list > li {
+    margin-bottom: 20px; position: relative; min-height: 2em;
+}
+ol.simple-list > li::before {
+    /*top: 10px; width: 0px; text-align: right; color: rgb(51, 51, 51); line-height: 1; padding-left: 30px; font-size: 35pt; font-weight: bold; float: left; position: relative; content: counter(li-counter); counter-increment: li-counter;*/
+}
+ol.simple-list > li:hover::before {
+    color: rgb(255, 255, 255);
+}
+ol.simple-list > li::after {
+    height: 0px; clear: both; display: block; visibility: hidden; content: "";
+}
+#crumbs ol.simple-list > li:hover a {
+    color: rgb(255, 255, 255);
+}
+#crumbs ol.simple-list > li:hover a::after {
+    border-left-color: rgb(0, 158, 224);
+}
+#crumbs ol li.selected:hover a::after {
+    border-left-color: #3c8dbc;
+}
+
+
+.image
+{
+    width:16px;
+    padding-bottom: 5px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+.disabled > a{
+    color:#bbb;
+}
+
+
+

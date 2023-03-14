@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">       
+<tiles-definitions>
+           
+    <definition name="index" extends="PublicSiteTemplate">
+        <put-attribute name="title" value="title.index"></put-attribute>        
+        <put-attribute name="body" value="/WEB-INF/jsp/public.jsp" />
+    </definition>
+	
+    <definition name="login" extends="PublicSiteTemplate">		
+        <put-attribute name="title" value="title.login"></put-attribute>        
+        <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+	
+    <definition name="404" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.404" />
+        <put-attribute name="body" value="/WEB-INF/jsp/404.jsp" />
+    </definition>
+
+    <definition name="customError" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.customError" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error/ExceptionPage.jsp" />
+    </definition>
+	
+    <!--	 Administration -->
+    <definition name="user" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.user"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/user.jsp" />
+    </definition>
+    
+    <definition name="userList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.userList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/userList.jsp" />
+    </definition>
+    
+    <definition name="role" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.role"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/role.jsp" />
+    </definition>
+    
+    <definition name="roleList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.roleList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/roleList.jsp" />
+    </definition>
+    
+    <definition name="rolePage" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.rolePage" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/rolePage.jsp" />
+    </definition>
+	
+    <definition name="page" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/page.jsp" />
+    </definition>
+    
+    <definition name="pageList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.pageList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/pageList.jsp" />
+    </definition>
+	
+    <definition name="changePassword" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.changePassword" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/changePassword.jsp" />
+    </definition>
+    <definition name="changePasswordFirstTime" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.changePassword" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/changePasswordFirstTime.jsp" />
+    </definition>
+    
+    <definition name="changePasswordByAdmin" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.changePasswordByAdmin" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/changePasswordByAdmin.jsp" />
+    </definition>
+    
+    <definition name="passwordResetRequest" extends="PublicSiteTemplate">
+        <put-attribute name="title" value="title.resetPassword" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/passwordResetRequest.jsp" />
+    </definition>
+    
+    <definition name="passwordReset" extends="PublicSiteTemplate">
+        <put-attribute name="title" value="title.resetPassword" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/passwordReset.jsp" />
+    </definition>
+    
+    <definition name="userProfile" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.userProfile" />
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/userProfile.jsp" />
+    </definition>
+    
+    <definition name="dashboard" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.dashboard" />
+        <put-attribute name="body" value="/WEB-INF/jsp/dashboard.jsp" />
+    </definition>
+    <definition name="dashboardUpdate" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.dashboard" />
+        <put-attribute name="body" value="/WEB-INF/jsp/dashboardUpdate.jsp" />
+    </definition>
+    <definition name="division" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.division" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/division.jsp" />
+    </definition>
+    <definition name="divisionList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.divisionList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/divisionList.jsp" />
+    </definition>
+    <definition name="district" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.district" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/district.jsp" />
+    </definition>
+    <definition name="districtList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.districtList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/districtList.jsp" />
+    </definition>
+    <definition name="upazila" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.upazila" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/upazilla.jsp" />
+    </definition>
+    <definition name="upazilaList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.upazilaList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/upazilaList.jsp" />
+    </definition>
+    <definition name="union" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.union" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/union.jsp" />
+    </definition>
+    <definition name="unionList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.unionList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/unionList.jsp" />
+    </definition>
+    <definition name="municipalOrCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.municipalOrCityCorporation" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/municipalOrCityCorporation.jsp" />
+    </definition>
+    <definition name="municipalOrCityCorporationList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.municipalOrCityCorporationList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/municipalOrCityCorporationList.jsp" />
+    </definition>
+    <definition name="bgmeaFactory" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.factory" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bgmeaFactory.jsp" />
+    </definition>
+    <definition name="bgmeaFactoryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.factoryList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bgmeaFactoryList.jsp" />
+    </definition>
+    <definition name="bkmeaFactory" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.factory" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bkmeaFactory.jsp" />
+    </definition>
+    <definition name="bkmeaFactoryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.factoryList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bkmeaFactoryList.jsp" />
+    </definition>
+    <definition name="ministry" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.ministry" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/ministry.jsp" />
+    </definition>
+    <definition name="ministryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.ministryList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/ministryList.jsp" />
+    </definition>
+    <definition name="scheme" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.scheme" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/scheme.jsp" />
+    </definition>
+    <definition name="schemeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeList.jsp" />
+    </definition>
+    <definition name="schemeAttribute" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeAttribute" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeAttribute.jsp" />
+    </definition>
+    <definition name="schemeAttributeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeAttributeList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeAttributeList.jsp" />
+    </definition>
+    <definition name="schemeAttributeSetupData" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeAttributeSetupData" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeAttributeSetupData.jsp" />
+    </definition>
+    <definition name="schemeAttributeSetup" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeAttributeSetup" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeAttributeSetup.jsp" />
+    </definition>
+    <definition name="schemeAttributeSetupDataList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.schemeAttributeSetupDataList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/schemeAttributeSetupDataList.jsp" />
+    </definition>
+    <definition name="paymentType" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentType"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/paymentType.jsp" />
+    </definition>
+    <definition name="paymentTypeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentTypeList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/paymentTypeList.jsp" />
+    </definition>    
+    <definition name="mobileBankingProviderList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.mobileBankingProviderList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/mobileBankingProviderList.jsp" />
+    </definition>
+    <definition name="mobileBankingProvider" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.mobileBankingProvider"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/mobileBankingProvider.jsp" />
+    </definition>
+    <definition name="bank" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.bank" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bank.jsp" />
+    </definition>
+    <definition name="bankList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.bankList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/bankList.jsp" />
+    </definition>
+    <definition name="branch" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.branch" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/branch.jsp" />
+    </definition>
+    <definition name="branchList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.branchList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/branchList.jsp" />
+    </definition>
+    <definition name="postOfficeBranch" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.postOfficeBranch" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/postOfficeBranch.jsp" />
+    </definition>
+    <definition name="postOfficeBranchList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.postOfficeBranchList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/postOfficeBranchList.jsp" />
+    </definition>
+    <definition name="accountType" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.accountType" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/accountType.jsp" />
+    </definition>
+    <definition name="accountTypeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.accountTypeList" />
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/accountTypeList.jsp" />
+    </definition>        
+    <!-- Applicant Registration -->    
+    <definition name="applicantFormUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantFormUnion.jsp" />
+    </definition>
+    <definition name="applicantFormBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantFormBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="applicantFormMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantFormMunicipal.jsp" />
+    </definition>
+    <definition name="applicantFormCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantFormCityCorporation.jsp" />
+    </definition>
+    <!--    Applicant List    -->
+    <definition name="applicantListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantListUnion.jsp" />
+    </definition>
+    <definition name="applicantListBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantListBgmea.jsp" />
+    </definition>
+    <definition name="applicantListBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantListBkmea.jsp" />
+    </definition>
+    <definition name="applicantListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantListMunicipal.jsp" />
+    </definition>
+    <definition name="applicantListCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantListCityCorporation.jsp" />
+    </definition>
+    <definition name="viewApplicant" extends="ApplicantTemplate">
+        <put-attribute name="title" value="title.viewApplicant"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/viewApplicant.jsp" />
+    </definition>    
+    <definition name="applicantSummary" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.viewNewBeneficiaryPageHeader"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/applicantSummary.jsp" />
+    </definition>    
+    <!--    Selection-->
+    <definition name="prioritizationUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.prioritization"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/prioritizationUnion.jsp" />
+    </definition>
+    <definition name="prioritizationBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.prioritization"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/prioritizationBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="prioritizationBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.prioritization"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/prioritizationBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="prioritizationMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.prioritization"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/prioritizationMunicipal.jsp" />
+    </definition>
+    <definition name="prioritizationCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.prioritization"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/prioritizationCityCorporation.jsp" />
+    </definition>
+    <definition name="recommendationUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.recommendation"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/recommendationUnion.jsp" />
+    </definition>
+    <definition name="recommendationMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.recommendation"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/recommendationMunicipal.jsp" />
+    </definition>
+    <definition name="recommendationCC" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.recommendation"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/recommendationCC.jsp" />
+    </definition>
+    <definition name="recommendationBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.recommendation"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/recommendationBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="upazilaVerificationUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.auditing"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/upazilaVerificationUnion.jsp" />
+    </definition>
+    <definition name="upazilaVerificationMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.auditing"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/upazilaVerificationMunicipal.jsp" />
+    </definition>
+    <definition name="districtVerificationCC" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.auditing"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/districtVerificationCC.jsp" />
+    </definition>
+    <definition name="bgmeaBkmeaVerification" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.auditing"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/bgmeaBkmeaVerification.jsp" />
+    </definition>    
+    <definition name="dwaApprovalBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.auditing"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/selection/dwaApprovalBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="viewComment" extends="ApplicantTemplate">
+        <put-attribute name="title" value="View Comment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/viewComment.jsp" />
+    </definition>
+    <!--    Beneficiary-->
+    
+    <definition name="beneficiaryProfile" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryProfile.jsp" />
+    </definition>
+    <definition name="beneficiaryFormUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryFormUnion.jsp" />
+    </definition>
+    <definition name="beneficiaryFormMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryFormMunicipal.jsp" />
+    </definition>
+    <definition name="beneficiaryFormCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryFormCityCorporation.jsp" />
+    </definition>
+    <definition name="beneficiaryFormBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryForm"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryFormBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="beneficiaryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryList.jsp" />
+    </definition>
+    <definition name="beneficiaryListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryListUnion.jsp" />
+    </definition>
+    <definition name="paymentInformationView" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationView"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationView.jsp" />
+    </definition>
+    <definition name="paymentInformationViewUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewUnion"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationViewUnion.jsp" />
+    </definition>
+    <definition name="paymentInformationViewMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewMunicipal"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationViewMunicipal.jsp" />
+    </definition>
+    <definition name="paymentInformationViewBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewBkmea"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationViewBkmea.jsp" />
+    </definition>
+    <definition name="paymentInformationViewBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewBgmea"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationViewBgmea.jsp" />
+    </definition>
+    
+    
+    <definition name="paymentCompleteViewUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewUnion"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/paymentComplete/paymentCompleteViewUnion.jsp" />
+    </definition>
+    <definition name="paymentCompleteViewMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewMunicipal"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/paymentComplete/paymentCompleteViewMunicipal.jsp" />
+    </definition>
+    <definition name="paymentCompleteViewBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewBkmea"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/paymentComplete/paymentCompleteViewBkmea.jsp" />
+    </definition>
+    <definition name="paymentCompleteViewBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationViewBgmea"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/paymentComplete/paymentCompleteViewBgmea.jsp" />
+    </definition>
+    
+    
+    <definition name="paymentInformationUpdate" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentInformationUpdate"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentInformationUpdate.jsp" />
+    </definition>
+    <definition name="beneficiaryListBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryListBgmea.jsp" />
+    </definition>
+    <definition name="beneficiaryListBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryListBkmea.jsp" />
+    </definition>
+    <definition name="beneficiaryListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryListMunicipal.jsp" />
+    </definition>
+    <definition name="beneficiaryListCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryListCityCorporation.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusList.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusListUnion.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusListMunicipal.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusListCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusListCityCorporation.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusListBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusListBgmea.jsp" />
+    </definition>
+    <definition name="beneficiaryChangeStatusListBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryChangeStatusListBkmea.jsp" />
+    </definition>
+    <definition name="changeBeneficiaryStatus" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryChangeStatus"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/changeBeneficiaryStatus.jsp" />
+    </definition>
+    <definition name="beneficiaryForm" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiary"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/beneficiaryForm.jsp" />
+    </definition>         
+    <definition name="viewBeneficiary" extends="ApplicantTemplate">
+        <put-attribute name="title" value="title.beneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/viewBeneficiary.jsp" />
+    </definition>     
+    <!-- Payroll -->
+    <definition name="fiscalYear" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.fiscalYear"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/fiscalYear.jsp" />
+    </definition>
+    <definition name="fiscalYearList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.fiscalYearList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/fiscalYearList.jsp" />
+    </definition>
+    <definition name="paymentCycle" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentCycle"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentCycle.jsp" />
+    </definition>
+    <definition name="paymentCycleList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentCycleList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentCycleList.jsp" />
+    </definition>
+    <definition name="batch" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.batch"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/batch.jsp" />
+    </definition>
+    <definition name="batchList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.batchList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/batchList.jsp" />
+    </definition>
+    <definition name="payment" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payment.jsp" />
+    </definition>
+    <!--payroll generation-->
+    <definition name="payrollUpazila" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollGenerationUpazila.jsp" />
+    </definition>
+    <definition name="payrollDistrict" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollGenerationDistrict.jsp" />
+    </definition>
+    <definition name="payrollBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollGenerationBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="subPayrollUpazila" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/subPayrollGenerationUpazila.jsp" />
+    </definition>
+    <definition name="subPayrollDistrict" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/subPayrollGenerationDistrict.jsp" />
+    </definition>
+    <definition name="subPayrollBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/subPayrollGenerationBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="paymentList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentList.jsp" />
+    </definition>
+    <definition name="payrollSummaryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollSummaryList.jsp" />
+    </definition>
+    <!--Payroll summary list-->
+    <definition name="payrollSummaryListUpazila" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollSummaryListUpazila.jsp" />
+    </definition>
+    <definition name="payrollSummaryListDistrict" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollSummaryListDistrict.jsp" />
+    </definition>
+    <definition name="payrollSummaryListBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollSummaryListBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="pendingPaymentList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.pendingPaymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/pendingPaymentList.jsp" />
+    </definition>
+    <definition name="payrollApproveList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.pendingPaymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollApproveList.jsp" />
+    </definition>
+    <definition name="payrollApproveListBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.pendingPaymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollApproveListBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="payrollApproveListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.pendingPaymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollApproveListMunicipal.jsp" />
+    </definition>
+    <definition name="approvePayment" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.approvePayment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/approvePayment.jsp" />
+    </definition>
+    <definition name="paymentStatusUpdate" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentStatusUpdate.jsp" />
+    </definition>
+    <definition name="paymentStatusUpdateUrban" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/paymentStatusUpdateUrban.jsp" />
+    </definition>
+    <definition name="approvePayroll" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.approvePayment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/approvePayroll.jsp" />
+    </definition>
+    <definition name="supplementaryPayrollUrban" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/supplementaryPayrollUrban.jsp" />
+    </definition>
+    <definition name="supplementaryPayrollRural" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/supplementaryPayrollRural.jsp" />
+    </definition>
+    <definition name="childPayment" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.payment"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/childPayment.jsp" />
+    </definition>
+    <definition name="payrollList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollList.jsp" />
+    </definition>  
+    <definition name="payrollListUpazila" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollListUpazila.jsp" />
+    </definition>  
+    <definition name="payrollListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollListUnion.jsp" />
+    </definition>  
+    <definition name="payrollListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/payroll/payrollListMunicipal.jsp" />
+    </definition>  
+    <!--    Grievance-->
+    <definition name="grievanceType" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceType"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceType.jsp" />
+    </definition>    
+    <definition name="grievanceTypeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceTypeList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceTypeList.jsp" />
+    </definition>
+    <definition name="grievanceStatus" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceStatus"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceStatus.jsp" />
+    </definition>    
+    <definition name="grievanceStatusList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceStatusList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceStatusList.jsp" />
+    </definition>
+    <definition name="grievance" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievance"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievance.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryList.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryListUnion.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryListMunicipal.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryListCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryListCityCorporation.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryListBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryListBgmea.jsp" />
+    </definition>
+    <definition name="newGrievanceBeneficiaryListBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievanceBeneficiaryList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievanceBeneficiaryListBkmea.jsp" />
+    </definition>
+    <definition name="newGrievance" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.newGrievance"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/newGrievance.jsp" />
+    </definition>       
+    <definition name="grievanceList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceList.jsp" />
+    </definition>    
+    <definition name="grievanceListUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceListUnion.jsp" />
+    </definition>    
+    <definition name="grievanceListMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceListMunicipal.jsp" />
+    </definition>    
+    <definition name="grievanceListCityCorporation" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceListCityCorporation.jsp" />
+    </definition>    
+    <definition name="grievanceListBgmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceListBgmea.jsp" />
+    </definition>    
+    <definition name="grievanceListBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/grievance/grievanceListBkmea.jsp" />
+    </definition>    
+    <!-- Report -->
+    <definition name="grievanceReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.grievanceReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/grievance/grievanceReport.jsp" />
+    </definition>
+    <definition name="applicantReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/applicant/applicantReport.jsp" />
+    </definition>
+    <definition name="applicantReportUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/applicant/applicantReportUnion.jsp" />
+    </definition>
+    <definition name="applicantReportMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/applicant/applicantReportMunicipal.jsp" />
+    </definition>
+    <definition name="applicantReportCC" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/applicant/applicantReportCC.jsp" />
+    </definition>
+    <definition name="applicantReportBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/applicant/applicantReportBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="beneficiaryReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/beneficiary/beneficiaryReport.jsp" />
+    </definition>
+    <definition name="beneficiaryReportUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/beneficiary/beneficiaryReportUnion.jsp" />
+    </definition>
+    <definition name="beneficiaryReportMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/beneficiary/beneficiaryReportMunicipal.jsp" />
+    </definition>
+    <definition name="beneficiaryReportCC" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/beneficiary/beneficiaryReportCC.jsp" />
+    </definition>
+    <definition name="beneficiaryReportBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/beneficiary/beneficiaryReportBgmeaBkmea.jsp" />
+    </definition>
+    <definition name="paymentReportUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/payroll/paymentReportUnion.jsp" />
+    </definition>
+    <definition name="paymentReportMunicipal" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/payroll/paymentReportMunicipal.jsp" />
+    </definition>
+    <definition name="paymentReportCC" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/payroll/paymentReportCC.jsp" />
+    </definition>
+    <definition name="paymentReportBgmeaBkmea" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.paymentReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/payroll/paymentReportBgmeaBkmea.jsp" />
+    </definition>
+    
+    <definition name="dataEntryReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.dataEntryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/dataEntry/dataEntryReport.jsp" />
+    </definition>   
+    <definition name="purpose" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.purpose"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/monitoring/purpose.jsp" />
+    </definition>
+    <definition name="purposeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.purposeList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/monitoring/purposeList.jsp" />
+    </definition>
+    <definition name="monitoring" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.monitoring"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/monitoring/monitoring.jsp" />
+    </definition>
+    <definition name="monitoringList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.monitoringList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/monitoring/monitoringList.jsp" />
+    </definition>
+    <definition name="notAuthorized" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.notAuthorized" />
+        <put-attribute name="body" value="/WEB-INF/jsp/notAuthorized.jsp" />
+    </definition>    
+    <definition name="doubleDippingReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.doubleDippingReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/selection/doubleDippingReport.jsp" />
+    </definition>
+    <definition name="auditTrail" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.auditTrail"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/auditTrail/auditTrail.jsp" />
+    </definition>        
+    <!--    Notice-->
+    <definition name="notice" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.notice"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/noticeBoard/notice.jsp" />
+    </definition>
+    <definition name="viewNotice" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.notice"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/noticeBoard/viewNotice.jsp" />
+    </definition>
+    <definition name="noticeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.notice"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/noticeBoard/noticeList.jsp" />
+    </definition>
+    <definition name="viewBeneficiaryNidComparisonData" extends="ApplicantTemplate">
+        <put-attribute name="title" value="label.notice"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/viewBeneficiaryNidComparisonData.jsp" />
+    </definition>
+    <definition name="viewApplicantNidComparisonData" extends="ApplicantTemplate">
+        <put-attribute name="title" value="label.notice"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/viewApplicantNidComparisonData.jsp" />
+    </definition>
+    <definition name="village" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.village"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/village.jsp" />
+    </definition>
+    <definition name="villageList" extends="DefaultTemplate">
+        <put-attribute name="title" value="label.village"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/masterdata/villageList.jsp" />
+    </definition>
+    <definition name="trainingType" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainingType"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/trainingType.jsp" />
+    </definition>
+    <definition name="trainingTypeList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainingTypeList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/trainingTypeList.jsp" />
+    </definition>
+    <definition name="trainer" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainer"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/trainer.jsp" />
+    </definition>
+    <definition name="trainerList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainerList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/trainerList.jsp" />
+    </definition>    
+    <definition name="training" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/training.jsp" />
+    </definition>
+    <definition name="trainingUser" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/trainingUser/training.jsp" />
+    </definition>
+    <definition name="trainingApplicantDetails" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/trainingUser/trainingApplicantDetails.jsp" />
+    </definition>
+    <definition name="ownTrainingReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/trainingUser/ownTrainingReport.jsp" />
+    </definition>
+    <definition name="trainingList" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainingList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/training/trainingList.jsp" />
+    </definition>
+    <definition name="trainingListUser" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.trainingList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/trainingUser/trainingList.jsp" />
+    </definition>
+    <definition name="trainingReport" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/training/trainingReport.jsp" />
+    </definition>
+    <definition name="allowRejectedApplicant" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.applicantList"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/applicant/allowRejectedApplicant.jsp" />
+    </definition>
+    
+    <definition name="userProfileNew" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.training"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/rm/userProfileNew.jsp" />
+    </definition>
+    <definition name="editBeneficiaryPaymentInfo" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.editPaymentInfo"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/editBeneficiaryPaymentInfo.jsp" />
+    </definition>
+</tiles-definitions>
+

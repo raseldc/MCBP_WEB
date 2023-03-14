@@ -1,0 +1,107 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 16, 2017, 9:18:26 AM
+    Author     : PCUser
+*/
+
+.error{
+    color:red;
+}
+
+/*.modal
+{
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: Black;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.8;
+}*/
+.center
+{
+    z-index: 1000;
+    margin: 300px auto;
+    padding: 10px;
+    width: 50px;
+    background-color: White;
+    border-radius: 10px;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -moz-opacity: 1;
+}
+.center img
+{
+    height: 32px;
+    width: 32px;
+}
+
+
+/* Important part */
+.modal-dialog{
+    /*overflow-y: initial !important*/
+}
+.modal-body{
+    height: 90%;
+    overflow: auto;
+}
+
+.modal-header {
+    background-color: #3c8dbc;
+    color: #fff;
+}
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}
+
+.mandatory
+{
+    color: Red;
+    padding-left: 2px;
+    font-weight: bold;
+    font-style: italic;	
+}
+
+.labelAsValue{
+    padding-top: 7px;
+}
+.back-to-top {
+        background: none;
+        margin: 0;
+        position: fixed;
+        bottom: 200px;
+        right: 0;
+        z-index: 100;
+        display: none;
+        text-decoration: none;
+        color: #3C8DBC;
+        background-color: #ffffff; 
+    }
+    .back-to-top i {
+      font-size: 50px;
+      padding-left: 5px;
+    }

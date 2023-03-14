@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 27, 2020, 11:27:50 PM
+    Author     : shamiul Islam-AnunadSolution
+*/
+
+.title1{font-size: 18px;
+        color: #000;
+        background: #E7E4E6;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 0px;
+        border-radius: 3px;
+        margin-top: 20px;}
+
+th{
+    text-align: center;
+}
+
+/*@page {
+    size: landscape; 
+    margin: 0;
+}*/
+
+/*@media print and (width: 21cm) and (height: 29.7cm) {
+    @page {
+        margin: 3cm;
+        size: landscape;  
+    }
+}*/
+
+.col-xs-12 {
+    width: 100%;
+}
+@media (min-width: 768px){
+    .col-sm-6 {
+        width: 50%;
+    }
+}
+
+.col-md-55, .col-xs-12, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+/*@page {
+    size: landscape; 
+    margin: 0;
+}*/
+/*@page { size: 84.1cm 59.4cm;margin: 1cm 1cm 1cm 1cm; }*/
