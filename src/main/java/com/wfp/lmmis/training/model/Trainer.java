@@ -22,13 +22,11 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Table(name = "trainer")
 @Entity
-public class Trainer extends BaseModel implements Serializable
-{
+public class Trainer extends BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "tinyint unsigned")
     private Integer id;
 
     @NotBlank
@@ -48,33 +46,27 @@ public class Trainer extends BaseModel implements Serializable
     @Column(name = "photo_path")
     private String photoPath;
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNameInBangla()
-    {
+    public String getNameInBangla() {
         return nameInBangla;
     }
 
-    public void setNameInBangla(String nameInBangla)
-    {
+    public void setNameInBangla(String nameInBangla) {
         this.nameInBangla = nameInBangla;
     }
 
-    public String getNameInEnglish()
-    {
+    public String getNameInEnglish() {
         return nameInEnglish;
     }
 
-    public void setNameInEnglish(String nameInEnglish)
-    {
+    public void setNameInEnglish(String nameInEnglish) {
         this.nameInEnglish = nameInEnglish;
     }
 
@@ -82,13 +74,11 @@ public class Trainer extends BaseModel implements Serializable
      *
      * @return
      */
-    public String getPhotoPath()
-    {
+    public String getPhotoPath() {
         return photoPath;
     }
 
-    public void setPhotoPath(String photoPath)
-    {
+    public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
     }
 
@@ -96,60 +86,49 @@ public class Trainer extends BaseModel implements Serializable
      *
      * @return
      */
-    public String getOrganizationNumber()
-    {
+    public String getOrganizationNumber() {
         return organizationNumber;
     }
 
-    public void setOrganizationNumber(String organizationNumber)
-    {
+    public void setOrganizationNumber(String organizationNumber) {
         this.organizationNumber = organizationNumber;
     }
 
-    public String getContactPersonName()
-    {
+    public String getContactPersonName() {
         return contactPersonName;
     }
 
-    public void setContactPersonName(String contactPersonName)
-    {
+    public void setContactPersonName(String contactPersonName) {
         this.contactPersonName = contactPersonName;
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (obj == null)
-        {
+        if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass())
-        {
+        if (getClass() != obj.getClass()) {
             return false;
         }
         final Trainer other = (Trainer) obj;
-        if (!Objects.equals(this.id, other.id))
-        {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "com.wfp.lmmis.training.model.Trainer[ id=" + id + " ]";
     }
 

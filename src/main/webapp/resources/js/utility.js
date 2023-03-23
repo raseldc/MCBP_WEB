@@ -279,9 +279,15 @@ function loadVillage(unionId, wardNo, villageSelectId, selectedVillage) {
     });
 }
 function loadMunicipal(upazilaId, unionSelectId, selectedUnion) {
+    var cityCorporationList = [5901, 5902, 5903, 5904, 5905, 5906, 5907, 5908, 5909, 5910, 5911, 5912];
+    var url = "getMunicipal";
+    if (cityCorporationList.includes(parseInt(upazilaId)))
+    {
+        url = "getCityCorporation";
+    }
     $.ajax({
         type: "GET",
-        url: contextPath + "/getMunicipal/" + upazilaId,
+        url: contextPath + "/" + url + "/" + upazilaId,
         async: false,
         dataType: "json",
         success: function (response) {

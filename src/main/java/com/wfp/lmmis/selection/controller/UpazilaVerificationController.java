@@ -470,13 +470,15 @@ public class UpazilaVerificationController {
 
                                 continue;
                             }
-                            applicant.setApplicationStatus(ApplicationStatus.SELECTED_AT_FINAL_APPROVAL);
+
 //                        System.out.println("fiscal year 1 "+ applicant.getFiscalYear().getNameInEnglish());
                             if (!beneficiaryController.saveBeneficiary(applicant, session, request)) {
                                 //returnMsg = returnMsg + "NID " + applicant.getNid() + " : Failed To create Beneficiary,";
+
                                 totalFailedForBeneficiaryCreation = totalFailedForBeneficiaryCreation + 1;
                                 continue;
                             }
+                            applicant.setApplicationStatus(ApplicationStatus.SELECTED_AT_FINAL_APPROVAL);
                         } else {
                             applicant.setApplicationStatus(ApplicationStatus.REJECTED_AT_FINAL_APPROVAL);
                             totlaSuccessToReject = totlaSuccessToReject + 1;

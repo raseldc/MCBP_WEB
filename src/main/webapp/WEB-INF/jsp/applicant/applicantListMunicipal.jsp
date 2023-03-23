@@ -20,10 +20,10 @@
     }
     table.dataTable thead .sorting_asc:after{
         content:"";
-    } 
-   </style>
+    }
+</style>
 <script>
-     var startYearOfFY;
+    var startYearOfFY;
     var endYearOfFY;
     $(function () {
         includeJs(contextPath + "/resources/plugins/validation/src/localization/messages_" + selectedLocale + ".js");
@@ -62,12 +62,12 @@
 
         $("#pendingListForm").validate({
             rules: {// checks NAME not ID
-                "fiscalYear.id": {
-                    required: true
-                },
-                "scheme.id": {
-                    required: true
-                }
+//                "fiscalYear.id": {
+//                    required: true
+//                },
+//                "scheme.id": {
+//                    required: true
+//                }
             },
             errorPlacement: function (error, element) {
                 error.insertAfter(element);
@@ -99,6 +99,9 @@
         {
             loadMunicipal('${searchParameterForm.upazila.id}', $('#unionId'));
         }
+
+        var fiscalYear = $('#fiscalYear');
+        fiscalYear[0].selectedIndex = 1;
     });
     function loadFiscalYearInfo(id) {
         var fyId = $("#" + id + "").val();
@@ -258,7 +261,8 @@
                 <div class="form-group">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="middleNameInput" class="col-md-4 control-label"><spring:message code="label.fiscalYear" /><span class="mandatory">*</span></label>
+                            <label for="middleNameInput" class="col-md-4 control-label"><spring:message code="label.fiscalYear" />
+                            </label>
                             <div class="col-md-8">
                                 <spring:message code='label.select' var="select"/>
                                 <form:select class="form-control" path="fiscalYear.id"  id="fiscalYear" onchange="loadFiscalYearInfo(this.id)">  

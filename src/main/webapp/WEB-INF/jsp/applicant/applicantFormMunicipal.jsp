@@ -364,6 +364,20 @@
         } else if ('${applicantForm.isUnionAvailable}' === 'false' && '${applicantForm.presentUpazila.id}' !== "")
         {
             loadMunicipal('${applicantForm.presentUpazila.id}', $('#presentUnion'));
+
+
+        }
+
+        if ('${applicantForm.isUnionAvailable}' === 'true' && '${applicantForm.presentUpazila.id}' !== "")
+        {
+            var cityCorporationList = [5901, 5902, 5903, 5904, 5905, 5906, 5907, 5908, 5909, 5910, 5911, 5912];
+            var upazilaId = '${applicantForm.presentUpazila.id}';
+            if (cityCorporationList.includes(parseInt(upazilaId)))
+            {
+                var wardName = '${applicantForm.presentUnion.nameInBangla}';
+                $("#presentWardNo").val(wardName)
+                $("#presentWardNo").attr("readonly", true)
+            }
         }
 
         if ('${actionType}' !== 'create')
@@ -570,17 +584,17 @@
         $('#profilePhotoFile').attr('src', 'data:image/jpeg;base64,' + response.nidData.photo);
         $('#accountName').val(response.nidData.nameEn === "null" ? "" : replaceSpecialChar(response.nidData.nameEn));
 
-   
-        
-                $("#photo").hide();
-                $("#nidProfilePhotoFile").show();
-                $("#nidProfilePhotoFile").attr("src", "data:image/png;base64," + response.nidData.photo);
-                $("#nidImageBase64").val(response.nidData.photo);
-            
+
+
+        $("#photo").hide();
+        $("#nidProfilePhotoFile").show();
+        $("#nidProfilePhotoFile").attr("src", "data:image/png;base64," + response.nidData.photo);
+        $("#nidImageBase64").val(response.nidData.photo);
 
 
 
-        
+
+
         isExistOtherMIS('<spring:message code="label.failure" />', '<spring:message code="label.ok" />', '<spring:message code="label.no" />');
 
 
@@ -939,7 +953,7 @@
 
     }
     function isWardFoePermanent() {
-        var ward = $("#permanentUnion :selected").text();
+        var ward = $("#permUnion :selected").text();
         $("#permanentWardNo").val("")
         $("#permanentWardNo").attr("readonly", false)
         if (ward.indexOf("ward") == 0 || ward.indexOf("ওয়ার্ড") == 0)

@@ -292,7 +292,7 @@ public class ApplicantController {
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Map parameter = new HashMap();
             parameter.put("schemeId", ((UserDetail) request.getSession().getAttribute("userDetail")).getSchemeId());
-            parameter.put("fiscalYearId", Integer.valueOf(request.getParameter("fiscalYear")));
+            parameter.put("fiscalYearId", request.getParameter("fiscalYear").equals("") ? null : Integer.valueOf(request.getParameter("fiscalYear")));
             parameter.put("divisionId", divisionId != null && !"".equals(divisionId) ? Integer.valueOf(divisionId) : null);
             parameter.put("districtId", districtId != null && !"".equals(districtId) ? Integer.valueOf(districtId) : null);
             parameter.put("upazilaId", upazilaId != null && !"".equals(upazilaId) ? Integer.valueOf(upazilaId) : null);
@@ -1113,6 +1113,7 @@ public class ApplicantController {
             CommonUtility.mapConceptionTermEnumName(model);
             CommonUtility.mapMonthlyIncome(applicant.getApplicantType(), model);
             CommonUtility.mapHHWallMadeOfEnumName(applicant.getApplicantType(), model);
+            setDefaultAddress(userDetail, applicantForm);
 //            CommonUtility.mapBatchName(model, null);
             CommonUtility.getWardNoList(model);
             model.addAttribute("imagePath", FILE_CREATION_PATH);

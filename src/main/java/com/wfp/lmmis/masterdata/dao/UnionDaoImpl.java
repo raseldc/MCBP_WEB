@@ -135,7 +135,7 @@ public class UnionDaoImpl implements UnionDao {
     @Override
     public List<ItemObject> getMunicipalOrCityCorporation(Integer upazillaId, CoverageArea coverageArea) {
         @SuppressWarnings("unchecked")
-        String querySt = "select new com.wfp.lmmis.utility.ItemObject(u.id, u.nameInBangla, u.nameInEnglish) from Union u where 0=0";
+        String querySt = "select new com.wfp.lmmis.utility.ItemObject(u.id, u.nameInBangla, u.nameInEnglish) from Union u where 0=0 and u.active = true ";
 
         if (upazillaId != null) {
             querySt += " and u.upazilla.id = " + upazillaId;
@@ -143,6 +143,7 @@ public class UnionDaoImpl implements UnionDao {
         if (coverageArea != null) {
             querySt += " and u.coverageArea = " + coverageArea.ordinal();
         }
+
         querySt += " and u.deleted = 0 order by u.nameInEnglish";
         List<ItemObject> list = null;
         try {
