@@ -6,6 +6,7 @@
 package com.wfp.lmmis.types;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,9 +26,9 @@ public enum ApplicationStatus {
     /**
      *
      */
-    VERIFICATION_PENDING("Verification Pending", "ভেরিফিকেশন পেন্ডিং"),//4
-    VERIFICATION_APPROVED("Verification Approved", "ভেরিফিকেশনে অনুমোদিত"),//5
-    VERIFICATION_REJECTED("Verification Rejected", "ভেরিফিকেশনে বাতিল"),//6  
+    VERIFICATION_PENDING("Verification Pending", "যাচাই পেন্ডিং"),//4
+    VERIFICATION_APPROVED("Verification Approved", "যাচাই অনুমোদিত"),//5
+    VERIFICATION_REJECTED("Verification Rejected", "যাচাই বাতিল"),//6 
     DWA_APPROVAL_PENDING("DWA Approval Pending", "ডিডব্লিউএ অফিসার কর্তৃক যাচাই পেন্ডিং "),//7
     DWA_APPROVAL_APPROVED("DWA Approval Approved", "ডিডব্লিউএ অফিসার কর্তৃক অনুমোদিত"),//8
     DWA_APPROVAL_REJECTED("DWA Rejected", "ডিডব্লিউএ অফিসার কর্তৃক বাতিল"),//9  
@@ -121,11 +122,25 @@ public enum ApplicationStatus {
      *
      * @return
      */
-    public static List<EnumMappingClass> fromValuesToMapForApplicationUpdate() {
+    public static List<EnumMappingClass> fromValuesToMapForApplicationUpdate(String type) {
         List<EnumMappingClass> enumMappingClassList = new ArrayList<EnumMappingClass>();
         for (ApplicationStatus enumClass : ApplicationStatus.values()) {
-
-            enumMappingClassList.add(new EnumMappingClass(enumClass.name(), enumClass.ordinal(), enumClass.displayName, enumClass.displayNameBn));
+            if (type.equals("union") || type.equals("municipal")) {
+                List<Integer> statusList = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 10, 11));
+                if (statusList.contains(enumClass.ordinal())) {
+                    enumMappingClassList.add(new EnumMappingClass(enumClass.name(), enumClass.ordinal(), enumClass.displayName, enumClass.displayNameBn));
+                }
+            } else if (type.equals("bgmea")) {
+                List<Integer> statusList = new ArrayList<>(Arrays.asList(31));
+                if (statusList.contains(enumClass.ordinal())) {
+                    enumMappingClassList.add(new EnumMappingClass(enumClass.name(), enumClass.ordinal(), enumClass.displayName, enumClass.displayNameBn));
+                }
+            } else if (type.equals("bkmea")) {
+                List<Integer> statusList = new ArrayList<>(Arrays.asList(32));
+                if (statusList.contains(enumClass.ordinal())) {
+                    enumMappingClassList.add(new EnumMappingClass(enumClass.name(), enumClass.ordinal(), enumClass.displayName, enumClass.displayNameBn));
+                }
+            }
 
         }
 

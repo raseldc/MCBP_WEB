@@ -197,10 +197,11 @@
                         "districtId": $("#districtId").val(),
                         "upazilaId": $("#upazilaId").val(),
                         "unionId": $("#unionId").val(),
+                        "ward": getNumberInEnglish($("#ddWardNo").val()==""?0:$("#ddWardNo").val().toString()),
                         "applicantType": $("#applicantType").val(),
                         "startDate": sDate,
                         "endDate": eDate,
-                        "applicationStatus": $("#ddApplicationStatus").val()
+                        "applicationStatus": $("#ddApplicationStatus").val(),                        
 
                     }
                 },
@@ -301,7 +302,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group" style="display: none">
+                        <div class="form-group" style="display">
                             <label for="status" class="col-md-4 control-label"><spring:message code="label.status" /></label>
 
                             <div class="col-md-8">
@@ -433,12 +434,24 @@
                                     </c:otherwise>
                                 </c:choose>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-8">
-                                <div>
-                                    <button type="button" id="buttonSearch" class="btn bg-blue"><span class="glyphicon glyphicon-search">&nbsp;</span><spring:message code="label.search"/></button>
+                            <div class="form-group">
+                                <label for="middleNameInput" class="col-md-4 control-label"><spring:message code="label.wardNo" />
+                                    </label>
+                                <div class="col-md-8">
+                                    <spring:message code='label.wardNo' var="wardNo"/>
+                                    <form:select id="ddWardNo" class="form-control" path="ward" onchange="loadPresentVillageList(this)">
+                                        <form:option value="" label="${select}"></form:option>
+                                        <form:options items="${wardNoList}"></form:options> 
+                                    </form:select>
+                                    <form:errors path="ward" cssStyle="color:red"></form:errors>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <div>
+                                        <button type="button" id="buttonSearch" class="btn bg-blue"><span class="glyphicon glyphicon-search">&nbsp;</span><spring:message code="label.search"/></button>
                                 </div>
                             </div>
                         </div>

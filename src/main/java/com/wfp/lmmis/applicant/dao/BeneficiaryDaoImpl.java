@@ -522,8 +522,7 @@ public class BeneficiaryDaoImpl implements BeneficiaryDao {
             List<BeneficiaryReportData> list = queryObject.list();
             if (applicantType == ApplicantType.UNION || applicantType == ApplicantType.MUNICIPAL || applicantType == ApplicantType.CITYCORPORATION) {
                 for (BeneficiaryReportData beneficiaryReportData : list) {
-                    if ("bn".equals(locale)) {
-                        System.out.println("locale bangla");
+                    if ("bn".equals(locale)) {                        
                         beneficiaryReportData.setNationalID(CommonUtility.getNumberInBangla(beneficiaryReportData.getNationalID()));
                         beneficiaryReportData.setMobileNo(CommonUtility.getNumberInBangla(beneficiaryReportData.getMobileNo()));
                         if (beneficiaryReportData.getBeneficiaryStatus() != null) {

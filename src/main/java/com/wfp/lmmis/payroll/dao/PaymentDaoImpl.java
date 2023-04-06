@@ -547,9 +547,19 @@ public class PaymentDaoImpl implements PaymentDao {
                     }
                 } else {
                     querySt += ", o.district.id";
+                    if ("bn".equals(locale)) {
+                        querySt += ", o.district.nameInBangla";
+                    } else {
+                        querySt += ", o.district.nameInEnglish";
+                    }
                 }
             } else {
                 querySt += " o.division.id";
+                if ("bn".equals(locale)) {
+                    querySt += ", o.division.nameInBangla";
+                } else {
+                    querySt += ", o.division.nameInEnglish";
+                }
             }
 
             if (unionId != null && unionId != 0) {

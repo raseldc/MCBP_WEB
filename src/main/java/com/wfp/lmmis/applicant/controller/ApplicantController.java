@@ -161,9 +161,11 @@ public class ApplicantController {
             searchParameterForm.setApplicantType(ApplicantType.UNION);
             if (searchParameterForm.getDivision() == null) {
                 CommonUtility.mapDivisionName(model);
+
             }
+            CommonUtility.getWardNoList(model);
             model.addAttribute("searchParameterForm", searchParameterForm);
-            model.addAttribute("applicationStatus", ApplicationStatus.fromValuesToMapForApplicationUpdate());
+            model.addAttribute("applicationStatus", ApplicationStatus.fromValuesToMapForApplicationUpdate("union"));
         } catch (Exception e) {
             //logger.infoer(e.getMessage());
         }
@@ -179,6 +181,8 @@ public class ApplicantController {
             if (searchParameterForm.getDivision() == null) {
                 CommonUtility.mapDivisionName(model);
             }
+            CommonUtility.getWardNoList(model);
+            model.addAttribute("applicationStatus", ApplicationStatus.fromValuesToMapForApplicationUpdate("municipal"));
             model.addAttribute("searchParameterForm", searchParameterForm);
         } catch (Exception e) {
             //logger.infoer(e.getMessage());
@@ -210,6 +214,7 @@ public class ApplicantController {
             searchParameterForm.setApplicantType(ApplicantType.BGMEA);
             CommonUtility.mapBGMEAFactoryName(model);
             model.addAttribute("searchParameterForm", searchParameterForm);
+            model.addAttribute("applicationStatus", ApplicationStatus.fromValuesToMapForApplicationUpdate("bgmea"));
         } catch (Exception e) {
             //logger.infoer(e.getMessage());
         }
@@ -224,6 +229,7 @@ public class ApplicantController {
             searchParameterForm.setApplicantType(ApplicantType.BKMEA);
             CommonUtility.mapBKMEAFactoryName(model);
             model.addAttribute("searchParameterForm", searchParameterForm);
+            model.addAttribute("applicationStatus", ApplicationStatus.fromValuesToMapForApplicationUpdate("bkmea"));
         } catch (Exception e) {
             //logger.infoer(e.getMessage());
         }
@@ -238,7 +244,7 @@ public class ApplicantController {
 
         try {
 
-            String divisionId = null, districtId = null, upazilaId = null, unionId = null, bgmeaFactoryId = null, bkmeaFactoryId = null, nid = null, applicationStatus = null;
+            String divisionId = null, districtId = null, upazilaId = null, unionId = null, wardNo = null, bgmeaFactoryId = null, bkmeaFactoryId = null, nid = null, applicationStatus = null;
             int regularUser = 0, bgmeaUser = 0, bkmeaUser = 0;
             ApplicantType applicantType = null;
 //            Date startDate, endDate;
@@ -278,6 +284,9 @@ public class ApplicantController {
             if (request.getParameter("applicationStatus") != null) {
                 applicationStatus = request.getParameter("applicationStatus");
             }
+            if (request.getParameter("ward") != null) {
+                wardNo = request.getParameter("ward");
+            }
             Calendar startDate = null, endDate = null;
             System.out.println("request.getParameter(\"startDate\") = " + request.getParameter("startDate"));
             if (request.getParameter("startDate") != null && !"".equals(request.getParameter("startDate"))) {
@@ -307,6 +316,7 @@ public class ApplicantController {
             parameter.put("startDate", startDate);
             parameter.put("endDate", endDate);
             parameter.put("applicationStatus", applicationStatus != null && !"".equals(applicationStatus) ? Integer.valueOf(applicationStatus) : null);
+            parameter.put("wardNo", wardNo != null && !"".equals(wardNo) ? Integer.valueOf(wardNo) : null);
 
             boolean isUnionUser = ((UserDetail) request.getSession().getAttribute("userDetail")).getUnion() != null ? Boolean.TRUE : Boolean.FALSE;
             parameter.put("isUnionUser", isUnionUser);
@@ -1352,10 +1362,10 @@ public class ApplicantController {
             applicant.setModificationDate(Calendar.getInstance());
             applicant.setScheme(((UserDetail) session.getAttribute("userDetail")).getScheme());
             applicant.setFiscalYear(fiscalYearService.getActiveFiscalYear());
-            boolean isUnionUser = ((UserDetail) request.getSession().getAttribute("userDetail")).getUnion() != null ? Boolean.TRUE : Boolean.FALSE;
-            if (isUnionUser) {
-                applicant.setApplicationStatus(ApplicationStatus.PRIORITIZATION_PENDING);
-            }
+//            boolean isUnionUser = ((UserDetail) request.getSession().getAttribute("userDetail")).getUnion() != null ? Boolean.TRUE : Boolean.FALSE;
+//            if (isUnionUser) {
+//                applicant.setApplicationStatus(ApplicationStatus.PRIORITIZATION_PENDING);
+//            }
 
             createBasicInfo(applicant, applicantForm);
             createAddressInfo(applicant, applicantForm);

@@ -74,7 +74,7 @@ public class LoginController {
 //            model.addAttribute("msg", localizer.getLocalizedText("captchaNotMatch", LocaleContextHolder.getLocale()));
 //            return "login";
 //        }
-        System.out.println("LOGIN-----------------------------------------------------");
+        
         try {
             User dbUser = this.userService.getUser(loginForm.getUserID());
             if (dbUser == null) {

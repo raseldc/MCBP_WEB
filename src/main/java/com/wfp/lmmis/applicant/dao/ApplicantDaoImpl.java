@@ -249,6 +249,7 @@ public class ApplicantDaoImpl implements ApplicantDao {
             Integer districtId = parameter.get("districtId") != null ? (Integer) parameter.get("districtId") : null;
             Integer upazilaId = parameter.get("upazilaId") != null ? (Integer) parameter.get("upazilaId") : null;
             Integer unionId = parameter.get("unionId") != null ? (Integer) parameter.get("unionId") : null;
+            Integer wardNo = parameter.get("wardNo") != null ? (Integer) parameter.get("wardNo") : null;
             Integer bgmeaFactoryId = parameter.get("bgmeaFactoryId") != null ? (Integer) parameter.get("bgmeaFactoryId") : null;
             Integer bkmeaFactoryId = parameter.get("bkmeaFactoryId") != null ? (Integer) parameter.get("bkmeaFactoryId") : null;
             ApplicantType applicantType = parameter.get("applicantType") != null ? (ApplicantType) parameter.get("applicantType") : null;
@@ -290,13 +291,15 @@ public class ApplicantDaoImpl implements ApplicantDao {
             if (unionId != null && unionId != 0) {
                 querySt += " AND o.unionId = " + unionId;
             }
+            if (wardNo != null && wardNo != 0) {
+                querySt += " AND o.wardNo = " + wardNo;
+            }
             if (startDate != null) {
                 querySt += " AND o.creationDate >= :startDate";
             }
             if (endDate != null) {
                 querySt += " AND o.creationDate <= :endDate";
             }
-
             if (applicationStatus != null) {
                 querySt += " AND o.applicationStatus =:applicationStatus";
             }
@@ -468,11 +471,8 @@ public class ApplicantDaoImpl implements ApplicantDao {
             if (applicationStatusList != null && applicationStatusList.size() > 0) {
                 mainQuery.setParameterList("applicationStatusList", applicationStatusList);
                 countQuery.setParameterList("applicationStatusList", applicationStatusList);
-            }
-            System.out.println("applicant query " + mainQuerySt + querySt);
-            System.out.println("countQuerySt query " + countQuerySt + querySt);
-            List<ApplicantView> list = mainQuery.setFirstResult(offset).setMaxResults(numofRecords).list();
-            System.out.println("Aplicant FOund --------------------------->" + list.size());
+            }            
+            List<ApplicantView> list = mainQuery.setFirstResult(offset).setMaxResults(numofRecords).list();            
             long count = (Long) countQuery.list().get(0);
             List<Object> result = new ArrayList<Object>();
             result.add(list);

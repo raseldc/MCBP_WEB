@@ -192,11 +192,13 @@
                         "districtId": $("#districtId").val(),
                         "upazilaId": $("#upazilaId").val(),
                         "unionId": $("#unionId").val(),
+                        "ward": getNumberInEnglish($("#ddWardNo").val() == "" ? 0 : $("#ddWardNo").val().toString()),
                         "bgmeaFactoryId": $("#bgmeaFactoryId").val(),
                         "bkmeaFactoryId": $("#bkmeaFactoryId").val(),
                         "applicantType": $("#applicantType").val(),
                         "startDate": sDate,
-                        "endDate": eDate
+                        "endDate": eDate,
+                        "applicationStatus": $("#ddApplicationStatus").val()
                     }
                 },
                 "fnDrawCallback": function (oSettings) {
@@ -296,6 +298,23 @@
                             <div class="col-md-8">
                                 <input type="text" id="nid" name="nid" class="form-control" placeholder="${nid}">
                             </div>
+                        </div>
+                        <div class="form-group" style="display">
+                            <label for="status" class="col-md-4 control-label"><spring:message code="label.status" /></label>
+
+                            <div class="col-md-8">
+                                <spring:message code='label.select' var="select"/>
+                                <select class="form-control" path="status" id="ddApplicationStatus" >
+                                    <option value="" label="${select}"></option>
+                                    <c:forEach begin="1" items="${applicationStatus}" var="status" varStatus="index">  
+
+                                        <option  Value="${status.value}"  >${status.displayNameBn}</option>
+                                    </c:forEach>
+
+                                </select>
+
+                            </div>
+
                         </div>
                         <div class="form-group">
                             &nbsp;
@@ -416,6 +435,17 @@
                                             </div>
                                         </c:otherwise>
                                     </c:choose>
+                                </div>
+                                              <div class="form-group">
+                                <label for="middleNameInput" class="col-md-4 control-label"><spring:message code="label.wardNo" /></label>
+                                <div class="col-md-8">
+                                    <spring:message code='label.wardNo' var="wardNo"/>
+                                    <form:select id="ddWardNo" class="form-control" path="ward" onchange="loadPresentVillageList(this)">
+                                        <form:option value="" label="${select}"></form:option>
+                                        <form:options items="${wardNoList}"></form:options> 
+                                    </form:select>
+                                    <form:errors path="ward" cssStyle="color:red"></form:errors>
+                                    </div>
                                 </div>
                             </div>
                         </c:if>                         

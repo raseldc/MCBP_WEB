@@ -26,8 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "applicant_view")
-public class ApplicantView implements Serializable
-{
+public class ApplicantView implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,6 +67,8 @@ public class ApplicantView implements Serializable
     private Integer upazilaId;
     @Column(name = "union_id")
     private Integer unionId;
+    @Column(name = "ward_no")
+    private Integer wardNo;
     @Column(name = "factory_id")
     private Integer factoryId;
     @Column(name = "applicant_type")
@@ -82,38 +83,39 @@ public class ApplicantView implements Serializable
     @Temporal(TemporalType.DATE)
     private Date creationDate;
 
-    public Integer getId()
-    {
+    public Integer getWardNo() {
+        return wardNo;
+    }
+
+    public void setWardNo(Integer wardNo) {
+        this.wardNo = wardNo;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getFullNameInBangla()
-    {
+    public String getFullNameInBangla() {
         return fullNameInBangla;
     }
 
-    public void setFullNameInBangla(String fullNameInBangla)
-    {
+    public void setFullNameInBangla(String fullNameInBangla) {
         this.fullNameInBangla = fullNameInBangla;
     }
 
-    public String getFullNameInEnglish()
-    {
+    public String getFullNameInEnglish() {
         return fullNameInEnglish;
     }
 
-    public void setFullNameInEnglish(String fullNameInEnglish)
-    {
+    public void setFullNameInEnglish(String fullNameInEnglish) {
         this.fullNameInEnglish = fullNameInEnglish;
     }
 
-    public String getMobileNo()
-    {
+    public String getMobileNo() {
         return mobileNo;
     }
 
@@ -121,8 +123,7 @@ public class ApplicantView implements Serializable
      *
      * @param mobileNo
      */
-    public void setMobileNo(String mobileNo)
-    {
+    public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
 
@@ -130,33 +131,27 @@ public class ApplicantView implements Serializable
      *
      * @return
      */
-    public ApplicationStatus getApplicationStatus()
-    {
+    public ApplicationStatus getApplicationStatus() {
         return applicationStatus;
     }
 
-    public void setApplicationStatus(ApplicationStatus applicationStatus)
-    {
+    public void setApplicationStatus(ApplicationStatus applicationStatus) {
         this.applicationStatus = applicationStatus;
     }
 
-    public SystemRecommendedStatus getSystemRecommendedStatus()
-    {
+    public SystemRecommendedStatus getSystemRecommendedStatus() {
         return systemRecommendedStatus;
     }
 
-    public void setSystemRecommendedStatus(SystemRecommendedStatus systemRecommendedStatus)
-    {
+    public void setSystemRecommendedStatus(SystemRecommendedStatus systemRecommendedStatus) {
         this.systemRecommendedStatus = systemRecommendedStatus;
     }
 
-    public String getNid()
-    {
+    public String getNid() {
         return nid;
     }
 
-    public void setNid(String nid)
-    {
+    public void setNid(String nid) {
         this.nid = nid;
     }
 
@@ -164,18 +159,15 @@ public class ApplicantView implements Serializable
      *
      * @return
      */
-    public Date getDateOfBirth()
-    {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth)
-    {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPresentAddressLine1()
-    {
+    public String getPresentAddressLine1() {
         return presentAddressLine1;
     }
 
@@ -183,73 +175,59 @@ public class ApplicantView implements Serializable
      *
      * @param presentAddressLine1
      */
-    public void setPresentAddressLine1(String presentAddressLine1)
-    {
+    public void setPresentAddressLine1(String presentAddressLine1) {
         this.presentAddressLine1 = presentAddressLine1;
     }
 
-    public String getPresentAddressLine2()
-    {
+    public String getPresentAddressLine2() {
         return presentAddressLine2;
     }
 
-    public void setPresentAddressLine2(String presentAddressLine2)
-    {
+    public void setPresentAddressLine2(String presentAddressLine2) {
         this.presentAddressLine2 = presentAddressLine2;
     }
 
-    public Integer getDivisionId()
-    {
+    public Integer getDivisionId() {
         return divisionId;
     }
 
-    public void setDivisionId(Integer divisionId)
-    {
+    public void setDivisionId(Integer divisionId) {
         this.divisionId = divisionId;
     }
 
-    public Integer getDistrictId()
-    {
+    public Integer getDistrictId() {
         return districtId;
     }
 
-    public void setDistrictId(Integer districtId)
-    {
+    public void setDistrictId(Integer districtId) {
         this.districtId = districtId;
     }
 
-    public Integer getUpazilaId()
-    {
+    public Integer getUpazilaId() {
         return upazilaId;
     }
 
-    public void setUpazilaId(Integer upazilaId)
-    {
+    public void setUpazilaId(Integer upazilaId) {
         this.upazilaId = upazilaId;
     }
 
-    public Integer getUnionId()
-    {
+    public Integer getUnionId() {
         return unionId;
     }
 
-    public void setUnionId(Integer unionId)
-    {
+    public void setUnionId(Integer unionId) {
         this.unionId = unionId;
     }
 
-    public Integer getSchemeId()
-    {
+    public Integer getSchemeId() {
         return schemeId;
     }
 
-    public void setSchemeId(Integer schemeId)
-    {
+    public void setSchemeId(Integer schemeId) {
         this.schemeId = schemeId;
     }
 
-    public Integer getFiscalYearId()
-    {
+    public Integer getFiscalYearId() {
         return fiscalYearId;
     }
 
@@ -257,8 +235,7 @@ public class ApplicantView implements Serializable
      *
      * @param fiscalYearId
      */
-    public void setFiscalYearId(Integer fiscalYearId)
-    {
+    public void setFiscalYearId(Integer fiscalYearId) {
         this.fiscalYearId = fiscalYearId;
     }
 
@@ -266,73 +243,59 @@ public class ApplicantView implements Serializable
      *
      * @return
      */
-    public Integer getFactoryId()
-    {
+    public Integer getFactoryId() {
         return factoryId;
     }
 
-    public void setFactoryId(Integer factoryId)
-    {
+    public void setFactoryId(Integer factoryId) {
         this.factoryId = factoryId;
     }
 
-    public ApplicantType getApplicantType()
-    {
+    public ApplicantType getApplicantType() {
         return applicantType;
     }
 
-    public void setApplicantType(ApplicantType applicantType)
-    {
+    public void setApplicantType(ApplicantType applicantType) {
         this.applicantType = applicantType;
     }
 
-    public Boolean getRecommendationStatus()
-    {
+    public Boolean getRecommendationStatus() {
         return recommendationStatus;
     }
 
-    public void setRecommendationStatus(Boolean recommendationStatus)
-    {
+    public void setRecommendationStatus(Boolean recommendationStatus) {
         this.recommendationStatus = recommendationStatus;
     }
 
-    public Integer getScore()
-    {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(Integer score)
-    {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
-    public String getFullNameEn()
-    {
+    public String getFullNameEn() {
         return fullNameEn;
     }
 
-    public void setFullNameEn(String fullNameEn)
-    {
+    public void setFullNameEn(String fullNameEn) {
         this.fullNameEn = fullNameEn;
     }
 
-    public String getFullNameBn()
-    {
+    public String getFullNameBn() {
         return fullNameBn;
     }
 
-    public void setFullNameBn(String fullNameBn)
-    {
+    public void setFullNameBn(String fullNameBn) {
         this.fullNameBn = fullNameBn;
     }
 
-    public Date getCreationDate()
-    {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate)
-    {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 

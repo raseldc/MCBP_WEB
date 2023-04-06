@@ -20,10 +20,10 @@
     }
     table.dataTable thead .sorting_asc:after{
         content:"";
-    } 
+    }
 </style>
 <script>
-       var startYearOfFY;
+    var startYearOfFY;
     var endYearOfFY;
     $(function () {
         includeJs(contextPath + "/resources/plugins/validation/src/localization/messages_" + selectedLocale + ".js");
@@ -74,7 +74,7 @@
         });
 
         showModalDialog();
-         $('#startDate').MonthPicker({StartYear: startYearOfFY, Button: false, MonthFormat: 'mm-yy', OnAfterChooseMonth: function (selectedDate) {
+        $('#startDate').MonthPicker({StartYear: startYearOfFY, Button: false, MonthFormat: 'mm-yy', OnAfterChooseMonth: function (selectedDate) {
                 if (selectedLocale === 'bn') {
                     $("#" + this.id).val(getNumberInBangla($("#" + this.id).val()));
                 }
@@ -100,7 +100,7 @@
             loadUnion('${searchParameterForm.upazila.id}', $('#unionId'));
         }
     });
-function loadFiscalYearInfo(id) {
+    function loadFiscalYearInfo(id) {
         var fyId = $("#" + id + "").val();
 
         $.ajax({
@@ -188,7 +188,8 @@ function loadFiscalYearInfo(id) {
                         "bgmeaFactoryId": $("#bgmeaFactoryId").val(),
                         "applicantType": $("#applicantType").val(),
                         "startDate": sDate,
-                        "endDate": eDate
+                        "endDate": eDate,
+                        "applicationStatus": $("#ddApplicationStatus").val()
                     }
                 },
                 "fnDrawCallback": function (oSettings) {
@@ -264,7 +265,7 @@ function loadFiscalYearInfo(id) {
                                 <form:errors path="fiscalYear.id" cssStyle="color:red"></form:errors>
                                 </div>
                             </div>
-<div class="form-group" id="periodDiv">
+                            <div class="form-group" id="periodDiv">
                                 <label for="" class="col-md-4 control-label"><spring:message code="label.monthPeriod" /></label>
                             <div class="col-md-8">
                                 <div class="form-group row">                                
@@ -288,6 +289,23 @@ function loadFiscalYearInfo(id) {
                             <div class="col-md-8">
                                 <input type="text" id="applicationId" name="applicationId" class="form-control" placeholder="${nid}">
                             </div>
+                        </div>
+                            <div class="form-group" style="display">
+                            <label for="status" class="col-md-4 control-label"><spring:message code="label.status" /></label>
+
+                            <div class="col-md-8">
+                                <spring:message code='label.select' var="select"/>
+                                <select class="form-control" path="status" id="ddApplicationStatus" >
+                                    <option value="" label="${select}"></option>
+                                    <c:forEach begin="1" items="${applicationStatus}" var="status" varStatus="index">  
+
+                                        <option  Value="${status.value}"  >${status.displayNameBn}</option>
+                                    </c:forEach>
+
+                                </select>
+
+                            </div>
+
                         </div>
                         <div class="form-group">
                             &nbsp;

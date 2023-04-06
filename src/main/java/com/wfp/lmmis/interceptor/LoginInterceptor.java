@@ -65,8 +65,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
             }
         }
-        // String test = request.getReader().lines().collect(Collectors.joining(System.lineSeparator
-        System.out.println("True------------------------>");
+        
+        
         return true;
     }
 

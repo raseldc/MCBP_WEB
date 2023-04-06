@@ -450,6 +450,7 @@ public class UpazilaVerificationController {
                 int totlaSuccessToReject = 0;
                 int totalFailedForDuplicateAccount = 0;
                 int totalFailedForBeneficiaryCreation = 0;
+                String notAllowed = "";
                 UserDetail loggedUser = (UserDetail) session.getAttribute("userDetail");
                 for (ApplicantView applicantView : applicantList) {
 
@@ -466,8 +467,8 @@ public class UpazilaVerificationController {
                     } else {
                         if (applicant.getApplicationStatus() == ApplicationStatus.VERIFICATION_APPROVED) {
 
-                            if (!applicant.getPresentUpazila().getId().equals(loggedUser.getUpazila().getId())) {
-
+                            if (loggedUser.getUpazila() == null || !applicant.getPresentUpazila().getId().equals(loggedUser.getUpazila().getId())) {
+                                notAllowed = "আপনি এই কাজের জন্য অনুমোদিত নন। ";
                                 continue;
                             }
 
@@ -495,7 +496,8 @@ public class UpazilaVerificationController {
                         + totlaSuccess + " জনকে সফল ভাবে ভাতাভোগী বানানো হয়েছে।"
                         + totlaSuccessToReject + " জনকে চূড়ান্ত ভাবে বাতিল করা হয়েছে।"
                         + totalFailedForDuplicateAccount + " জনের হিসেব নম্বর ইতোমধ্যে ব্যবহার হয়েছে।"
-                        + totalFailedForBeneficiaryCreation + " জনের ভাতাভোগী বানাতে ব্যর্থ হয়েছে।";
+                        + totalFailedForBeneficiaryCreation + " জনের ভাতাভোগী বানাতে ব্যর্থ হয়েছে।"
+                        + notAllowed;
             }
 
             ControllerMessage controllerMessage;
