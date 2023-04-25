@@ -69,6 +69,8 @@ public class ApplicantView implements Serializable {
     private Integer unionId;
     @Column(name = "ward_no")
     private Integer wardNo;
+    @Column(name = "anc_status")
+    private Integer ancStatus;
     @Column(name = "factory_id")
     private Integer factoryId;
     @Column(name = "applicant_type")
@@ -299,4 +301,13 @@ public class ApplicantView implements Serializable {
         this.creationDate = creationDate;
     }
 
+    public Integer getAncStatus() {
+        return ancStatus;
+    }
+
+    public void setAncStatus(Integer ancStatus) {
+        this.ancStatus = ancStatus;
+    }
+
+    
 }

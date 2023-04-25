@@ -1,6 +1,8 @@
 package com.wfp.lmmis.applicant.dao;
 
+import com.wfp.lmmis.applicant.converter.ApplicantAncInformationConverter;
 import com.wfp.lmmis.applicant.model.Applicant;
+import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.applicant.model.ApplicantBiometricInfo;
 import com.wfp.lmmis.applicant.model.ApplicantSocioEconomicInfo;
 import com.wfp.lmmis.applicant.model.ApplicantView;
@@ -14,9 +16,9 @@ import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
 
 import com.wfp.lmmis.report.data.DoubleDippingReportData;
+import com.wfp.lmmis.selection.controller.AncVerificationRespose;
 import com.wfp.lmmis.selection.model.SelectionComments;
 import com.wfp.lmmis.types.ApplicationStatus;
-import com.wfp.lmmis.types.BeneficiaryStatus;
 import com.wfp.lmmis.utility.CommonUtility;
 import com.wfp.lmmis.utility.JsonResult;
 import java.math.BigInteger;
@@ -24,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Criteria;
@@ -471,8 +474,8 @@ public class ApplicantDaoImpl implements ApplicantDao {
             if (applicationStatusList != null && applicationStatusList.size() > 0) {
                 mainQuery.setParameterList("applicationStatusList", applicationStatusList);
                 countQuery.setParameterList("applicationStatusList", applicationStatusList);
-            }            
-            List<ApplicantView> list = mainQuery.setFirstResult(offset).setMaxResults(numofRecords).list();            
+            }
+            List<ApplicantView> list = mainQuery.setFirstResult(offset).setMaxResults(numofRecords).list();
             long count = (Long) countQuery.list().get(0);
             List<Object> result = new ArrayList<Object>();
             result.add(list);
@@ -1747,4 +1750,46 @@ public class ApplicantDaoImpl implements ApplicantDao {
         }
     }
 
+    @Override
+    public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose) {
+        try {
+            String query = "UPDATE applicant SET applicant.anc_status =" + ancVerificationRespose.getStatus() + " WHERE applicant.Id = " + ancVerificationRespose.getApplicantDetail().getId();
+            sessionFactory.getCurrentSession().createSQLQuery(query).executeUpdate();
+            ApplicantAncInformation applicantAncInformation = ApplicantAncInformationConverter.getEntity(ancVerificationRespose.getAncInformationDetail());
+            ApplicantAncInformation applicantAncInformationDB = (ApplicantAncInformation) sessionFactory.getCurrentSession().createQuery("SELECT a FROM ApplicantAncInformation a WHERE a.applicant.Id =:applicantId")
+                    .setParameter("applicantId", ancVerificationRespose.getApplicantDetail().getId()).uniqueResult();
+
+            Applicant applicant = new Applicant();
+            applicant.setId(ancVerificationRespose.getApplicantDetail().getId());
+            if (applicantAncInformationDB != null) {
+                applicantAncInformationDB.setName(applicantAncInformation.getName());
+                applicantAncInformationDB.setFatherName(applicantAncInformation.getFatherName());
+                applicantAncInformationDB.setMotherName(applicantAncInformation.getMotherName());
+                applicantAncInformationDB.setHusbandName(applicantAncInformation.getHusbandName());
+                applicantAncInformationDB.setName(applicantAncInformation.getName());
+                applicantAncInformationDB.setDob(applicantAncInformation.getDob());
+                applicantAncInformationDB.setPregnancyWeek(applicantAncInformation.getPregnancyWeek());
+                applicantAncInformationDB.setAnc1(applicantAncInformation.getAnc1());
+                applicantAncInformationDB.setAnc2(applicantAncInformation.getAnc2());
+                applicantAncInformationDB.setAnc3(applicantAncInformation.getAnc3());
+
+                applicantAncInformationDB.setModficationDate(new Date());
+                applicantAncInformationDB.setModifiedBy(ancVerificationRespose.getUserId());
+                this.sessionFactory.getCurrentSession().update(applicantAncInformationDB);
+
+            } else {
+
+                applicantAncInformation.setCreationDate(new Date());
+                applicantAncInformation.setCreatedBy(ancVerificationRespose.getUserId());
+                applicantAncInformation.setApplicant(applicant);
+                this.sessionFactory.getCurrentSession().save(applicantAncInformation);
+                this.sessionFactory.getCurrentSession().flush();
+            }
+
+            return 0;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        }
+    }
 }

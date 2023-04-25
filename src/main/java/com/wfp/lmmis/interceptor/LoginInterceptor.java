@@ -17,6 +17,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
             response.setDateHeader("Expires", 0); // Proxies.
         }
+        
 
         //    //logger.infoer(request.getRequestURI());
 //        System.out.println("request.getRequestURI() = " + request.getRequestURI());
@@ -45,6 +46,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 && !request.getRequestURI().contains("/api/training")
                 && !request.getRequestURI().contains("/api/applicantion/save")
                 && !request.getRequestURI().contains("/beneficiary-info/edit")
+                && !request.getRequestURI().contains("/anc-update")
                 && !request.getRequestURI().contains("/resources")) {
 
             if (request.getSession().getAttribute("userId") == null || request.getSession().getAttribute("userDetail") == null) {
@@ -65,8 +67,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
             }
         }
-        
-        
+
         return true;
     }
 

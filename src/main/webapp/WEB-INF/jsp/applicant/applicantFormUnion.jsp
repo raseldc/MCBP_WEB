@@ -464,6 +464,23 @@
         $("#spouseName").focus();
         $("#dateOfBirth").focus();
     }
+    function ancCardCheck(id) {
+        console.log(url);
+        $.ajax({
+            type: "GET",
+            url: contextPath + "/anc-comparison/" + id,
+            async: true,
+//        dataType: "json",
+            success: function (response) {
+                $(".modal-body").html(response);
+                return response;
+            },
+            failure: function () {
+                log("loading scheme failed!!");
+                return "error in loading data";
+            }
+        });
+    }
     function doNIDCheck(id) {
         var data = getDataFromUrl(contextPath + "/NIDcomparison/applicant/" + id);
         $('#myModal .modal-body').html(data);

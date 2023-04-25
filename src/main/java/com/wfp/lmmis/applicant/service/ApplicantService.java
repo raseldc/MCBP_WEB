@@ -12,6 +12,7 @@ import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
 import com.wfp.lmmis.report.data.BeneficiaryReportData;
 import com.wfp.lmmis.report.data.DoubleDippingReportData;
+import com.wfp.lmmis.selection.controller.AncVerificationRespose;
 import com.wfp.lmmis.types.ApplicationStatus;
 import com.wfp.lmmis.utility.JsonResult;
 import java.math.BigInteger;
@@ -112,4 +113,6 @@ public interface ApplicantService {
      * @return
      */
     public boolean checkUniqueAccountNumberAtApplicationSave(String accountNumber, Integer appId);
+    
+    public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose);
 }

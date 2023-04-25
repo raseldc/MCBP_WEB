@@ -1,5 +1,6 @@
 package com.wfp.lmmis.beneficiary.model;
 
+import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.enums.ConceptionTerm;
 import com.wfp.lmmis.enums.EducationLevelEnum;
@@ -20,7 +21,6 @@ import com.wfp.lmmis.masterdata.model.Union;
 import com.wfp.lmmis.masterdata.model.Upazilla;
 import com.wfp.lmmis.masterdata.model.Village;
 import com.wfp.lmmis.model.BaseModel;
-import com.wfp.lmmis.payroll.model.Batch;
 import com.wfp.lmmis.payroll.model.FiscalYear;
 import com.wfp.lmmis.types.BeneficiaryDeactivationReasons;
 import com.wfp.lmmis.types.BeneficiaryStatus;
@@ -30,6 +30,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -924,12 +925,23 @@ public class Beneficiary extends BaseModel implements Serializable {
      *
      * @return
      */
-    public Integer getIsLMMISExist() {        
+    public Integer getIsLMMISExist() {
         return isLMMISExist;
     }
 
     public void setIsLMMISExist(Integer isLMMISExist) {
         this.isLMMISExist = isLMMISExist;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "beneficiary")
+    private Set<ApplicantAncInformation> applicantAncInformations;
+
+    public Set<ApplicantAncInformation> getApplicantAncInformations() {
+        return this.applicantAncInformations;
+    }
+
+    public void setApplicantAncInformations(Set<ApplicantAncInformation> applicantAncInformations) {
+        this.applicantAncInformations = applicantAncInformations;
     }
 
 }

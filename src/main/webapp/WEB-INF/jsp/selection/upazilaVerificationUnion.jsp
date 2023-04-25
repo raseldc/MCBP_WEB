@@ -27,8 +27,61 @@
     }
 </style>
 <script>
+    var ancVerificationRespose;
     function loadUnionId() {
         $("#unionIdHidden").val($("#unionId").val());
+    }
+    function ancAccept(status) {
+        ancVerificationRespose.status = status
+        var ancVerificationResposeData = JSON.stringify(ancVerificationRespose);
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: "${Contexpath}/anc-update",
+                    contentType: 'application/json; charset=utf-8',
+                    data: ancVerificationResposeData,
+                    dataType: 'json',
+
+                    success: function (data) {
+                        console.log("Data ", data)
+                        $("#btnAncModal").click();
+                        $("#buttonSearch").click();
+
+
+
+                    }
+                });
+    }
+    function ancCardCheck(id) {
+
+        $.ajax({
+            type: "GET",
+            url: contextPath + "/anc-comparison/" + id,
+            async: true,
+//        dataType: "json",
+            success: function (response) {
+                ancVerificationRespose = response;
+                $("#btnAncModal").click();
+                $("#lbAncName").html(ancVerificationRespose.ancInformationDetail.name);
+                $("#lbAncFatherName").html(ancVerificationRespose.ancInformationDetail.fatherName);
+                $("#lbAncMotherName").html(ancVerificationRespose.ancInformationDetail.motherName);
+                $("#lbAncHusbandName").html(ancVerificationRespose.ancInformationDetail.husbandName);
+                $("#lbAncConceptionDuration").html(ancVerificationRespose.ancInformationDetail.pregnancyWeek);
+
+
+                $("#lbApplName").html(ancVerificationRespose.applicantDetail.fullNameInBangla);
+                $("#lbApplFatherName").html(ancVerificationRespose.applicantDetail.fatherName);
+                $("#lbApplMotherName").html(ancVerificationRespose.applicantDetail.motherName);
+                $("#lbApplHusbandName").html(ancVerificationRespose.applicantDetail.spouseName);
+                $("#lbApplConceptionDuration").html(ancVerificationRespose.applicantDetail.conceptionDuration);
+
+                return response;
+            },
+            failure: function () {
+                log("loading scheme failed!!");
+                return "error in loading data";
+            }
+        });
     }
     $(document).ready(function () {  //"select all" change 
         var path = '${pageContext.request.contextPath}';
@@ -181,8 +234,8 @@
         {
             loadUnion('${searchParameterForm.upazila.id}', $('#unionId'));
         }
-        
-        
+
+
         var msg = "${message.message}";
         if (msg.length > 0)
         {
@@ -620,6 +673,7 @@
                                 <th><spring:message code="label.verification"/></th>
                                 <th><spring:message code="label.systemRecommendedStatus" /></th>
                                 <th><spring:message code="view" var="tooltipView"/></th>
+                                <th><spring:message code="ancStatus" var="tooltipView"/></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -665,6 +719,124 @@
             </button>
         </div>
     </form:form> 
+
+    <!-- Button trigger modal -->
+    <button type="button" id="btnAncModal" class="btn btn-primary" style="display: none" data-toggle="modal" data-target="#modalAnc">
+
+    </button>
+    <div class="modal fade modal-anc" id="modalAnc" tabindex="-1" role="dialog" aria-labelledby="modalAnc" aria-hidden="true" style="opacity: 1; padding: 50px 0; height: 90%">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center" style="width: 70%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                        </button>
+                        <h3 class="modal-title" id="myModalLabel">
+                            <spring:message code='label.viewNewBeneficiaryPageHeader'/>
+                            ${headerTitle}
+                        </h3>
+
+                    </div>
+                    <div class="modal-body" style="height: 603px">
+                        <div class="row col-lg-12">
+                            <div class="col-lg-6">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-md-8">Anc Information</label>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.nameBn" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbAncName"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.fatherName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbAncFatherName"></label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.motherName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbAncMotherName"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.spouseName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbAncHusbandName"></label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.conceptionDuration" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbAncConceptionDuration"></label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-md-8" ><spring:message code="dashboard.applicantInfo" /> </label>
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.nameBn" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbApplName"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.fatherName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbApplFatherName"></label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.motherName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbApplMotherName"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.spouseName" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbApplHusbandName"></label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group  col-lg-12">
+                                    <label for="status" class="col-md-4 control-label"><spring:message code="label.conceptionDuration" /></label>
+                                    <div class="col-md-8">
+                                        <label id="lbApplConceptionDuration"></label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default bg-blue" onclick="ancAccept(1)"><spring:message code="accept"/></button>
+                        <button type="button" class="btn btn-default bg-blue" onclick="ancAccept(2)"><spring:message code="reject"/></button>
+                        <button type="button" class="btn btn-default bg-blue" data-dismiss="modal"><spring:message code="close"/></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 

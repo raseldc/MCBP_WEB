@@ -331,7 +331,17 @@ public class UpazilaVerificationController {
 //ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ")><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
 //ja.put("<a href=\"" + request.getContextPath() + "/applicant/viewApplicant/" + applicant.getId() + "\" ><span class=\"glyphicon glyphicon-edit\"></span></a>");
                 String viewDetails = localizer.getLocalizedText("viewDetails", LocaleContextHolder.getLocale());
+
                 ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
+                String ancStatus = "Not Check";
+                if (applicant.getAncStatus() == null) {
+                    ancStatus = "Not Check";
+                } else if (applicant.getAncStatus() == 1) {
+                    ancStatus = "Accepted";
+                } else if (applicant.getAncStatus() == 2) {
+                    ancStatus = "Reject";
+                }
+                ja.put("<a href=#" + " onclick=ancCardCheck(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"> </span>" + ancStatus + "</a>");
                 dataArray.put(ja);
             }
 
@@ -371,11 +381,17 @@ public class UpazilaVerificationController {
             String approvedApplicantList = request.getParameter("approvedApplicantList");
             String bgmeaFactoryId = request.getParameter("selectedBgmea");
             String bkmeaFactoryId = request.getParameter("selectedBkmea");
+            String applicantIdNotANC = "";
             if (!"".equals(approvedApplicantList)) {
                 String reason = request.getParameter("reasonFV");
                 String[] applicantArray = approvedApplicantList.split(",");
                 for (int i = 0; i < applicantArray.length; i++) {
+
                     Applicant applicant = applicantService.getApplicant(new Integer(applicantArray[i]));
+                    if (applicant.getAncStatus() == 2) {
+                        applicantIdNotANC = applicantIdNotANC + "" + applicant.getNid().toString() + ",";
+                        continue;
+                    }
                     applicant.setApplicationStatus(ApplicationStatus.VERIFICATION_APPROVED);
                     applicant.setModifiedBy((User) session.getAttribute("user"));
                     applicant.setModificationDate(Calendar.getInstance());
@@ -392,12 +408,16 @@ public class UpazilaVerificationController {
 
                 System.out.println("----------Bgmea factory id = " + bgmeaFactoryId);
                 ControllerMessage controllerMessage;
+                if (applicantIdNotANC.length() > 0) {
+                    applicantIdNotANC = "এই আবেদনকারী ব্যতীত " + applicantIdNotANC;
+                }
                 if (bgmeaFactoryId != null && !"".equals(bgmeaFactoryId)) {
-                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("recommendUpazilaPresidentVerification", LocaleContextHolder.getLocale()));
+
+                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("recommendUpazilaPresidentVerification", LocaleContextHolder.getLocale()) + applicantIdNotANC);
                 } else if (bkmeaFactoryId != null && !"".equals(bkmeaFactoryId)) {
-                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("recommendUpazilaPresidentVerification", LocaleContextHolder.getLocale()));
+                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("recommendUpazilaPresidentVerification", LocaleContextHolder.getLocale()) + applicantIdNotANC);
                 } else {
-                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("approveUpazilaPresidentVerification", LocaleContextHolder.getLocale()));
+                    controllerMessage = new ControllerMessage(ControllerMessageType.SUCCESS, localizer.getLocalizedText("approveUpazilaPresidentVerification", LocaleContextHolder.getLocale()) + applicantIdNotANC);
 
                 }
                 redirectAttributes.addFlashAttribute("message", controllerMessage);

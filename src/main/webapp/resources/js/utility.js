@@ -834,7 +834,8 @@ function showModalDialog() {
     $('[data-toggle="modal"]').click(function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
-        if (url.indexOf('#') == 0) {
+        if (url == null || url == "") {
+        } else if (url.indexOf('#') == 0) {
             $(url).modal('open');
         } else {
             $('#loading-indicator').show();

@@ -12,6 +12,7 @@ import com.wfp.lmmis.exception.ExceptionWrapper;
 import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
 import com.wfp.lmmis.report.data.DoubleDippingReportData;
+import com.wfp.lmmis.selection.controller.AncVerificationRespose;
 import com.wfp.lmmis.types.ApplicationStatus;
 import com.wfp.lmmis.utility.JsonResult;
 import java.math.BigInteger;
@@ -62,7 +63,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 //        this.districtDao.delete(districtId);
 //    }
 //    
-
     /**
      *
      * @return
@@ -208,4 +208,8 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantDao.checkUniqueAccountNumberAtApplicationSave(accountNumber, appId);
     }
 
+    @Override
+    public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose) {
+        return applicantDao.updateApplicantAncStatus(ancVerificationRespose);
+    }
 }

@@ -29,6 +29,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -971,4 +972,26 @@ public class Applicant extends BaseModel implements Serializable {
     public void setIsLMMISExist(Integer isLMMISExist) {
         this.isLMMISExist = isLMMISExist;
     }
+    @Column(name = "anc_status")
+    private Integer ancStatus;
+
+    public Integer getAncStatus() {
+        return this.ancStatus;
+    }
+
+    public void setAncStatus(Integer ancStatus) {
+        this.ancStatus = ancStatus;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "applicant")
+    private Set<ApplicantAncInformation> applicantAncInformations;
+
+    public Set<ApplicantAncInformation> getApplicantAncInformations() {
+        return this.applicantAncInformations;
+    }
+
+    public void setApplicantAncInformations(Set<ApplicantAncInformation> applicantAncInformations) {
+        this.applicantAncInformations = applicantAncInformations;
+    }
+
 }
