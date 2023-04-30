@@ -59,23 +59,23 @@ public class AncVerificationController {
             JSONObject becJsonResult = null;
             String dobStr = CalendarUtility.getDateString(applicant.getDateOfBirth().getTime(), "yyyy-MM-dd");
 
-//            becJsonResult = getAncCardInfromation(dobStr, applicant.getNid().toString());
-//            Gson g = new GsonBuilder().registerTypeAdapter(Integer.class, new com.wfp.lmmis.training.controller.IntegerTypeAdapter()).create();
-//            ApplicantAncInformationDetail applicantAncInformationDetail = g.fromJson(becJsonResult.toString(), ApplicantAncInformationDetail.class);
+            becJsonResult = getAncCardInfromation(dobStr, applicant.getNid().toString());
+            Gson g = new GsonBuilder().registerTypeAdapter(Integer.class, new com.wfp.lmmis.training.controller.IntegerTypeAdapter()).create();
+            ApplicantAncInformationDetail applicantAncInformationDetail = g.fromJson(becJsonResult.toString(), ApplicantAncInformationDetail.class);
             //for testing
-            ApplicantAncInformationDetail applicantAncInformationDetail = new ApplicantAncInformationDetail();
-            applicantAncInformationDetail.setFatherName("Test");
-            applicantAncInformationDetail.setMotherName("Test");
-            applicantAncInformationDetail.setName("Test");
-            applicantAncInformationDetail.setDob("1987-03-20");
-            applicantAncInformationDetail.setHusbandName("Test");
-            applicantAncInformationDetail.setAnc1("1");
-            applicantAncInformationDetail.setAnc2("1");
-            applicantAncInformationDetail.setAnc3("1");
-            applicantAncInformationDetail.setAnc4("1");
-            applicantAncInformationDetail.setNid(applicant.getNid().toString());
-
-            applicantAncInformationDetail.setPregnancyWeek("12");
+//            applicantAncInformationDetail = new ApplicantAncInformationDetail();
+//            applicantAncInformationDetail.setFatherName("Test");
+//            applicantAncInformationDetail.setMotherName("Test");
+//            applicantAncInformationDetail.setName("Test");
+//            applicantAncInformationDetail.setDob("1987-03-20");
+//            applicantAncInformationDetail.setHusbandName("Test");
+//            applicantAncInformationDetail.setAnc1("1");
+//            applicantAncInformationDetail.setAnc2("1");
+//            applicantAncInformationDetail.setAnc3("1");
+//            applicantAncInformationDetail.setAnc4("1");
+//            applicantAncInformationDetail.setNid(applicant.getNid().toString());
+//
+//            applicantAncInformationDetail.setPregnancyWeek("12");
 
             AncVerificationRespose ancVerificationRespose = new AncVerificationRespose();
             ancVerificationRespose.setAncInformationDetail(applicantAncInformationDetail);
@@ -98,28 +98,35 @@ public class AncVerificationController {
 
     public JSONObject getAncCardInfromation(String dob, String nid) throws Exception {
         System.out.println("Get Infromation FROM anc");
-        String python_url = "http://43.229.15.117/api/nid/";//environment.getRequiredProperty("spring.url");
+        String python_url = "http://mamoni.net:8080/rhis_fwc_monitoring/pregwomendata?zilla=4&nid=5512452433";//environment.getRequiredProperty("spring.url");
         URL url = new URL(python_url);
         HttpURLConnection.setFollowRedirects(false);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         System.out.println("url = " + url.toString());
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        con.setDoOutput(true);
-        con.setDoInput(true);
+        con.setRequestMethod("GET");
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Accept-Charset", "UTF-8");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36");
+////        con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+////        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+//        con.addRequestProperty("User-Agent", "Mozilla/5.0"); // add this line to your code
+//        con.setDoOutput(true);
+//        con.setDoInput(true);
+//        con.setInstanceFollowRedirects(false);
+//        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//        con.setRequestProperty("charset", "utf-8");
         System.out.println("Request Method" + con.getRequestMethod());
-        JSONObject json = new JSONObject();
-        json.put("nid", nid);
-        json.put("dob", dob);
+//        JSONObject json = new JSONObject();
+//        json.put("nid", nid);
+//        json.put("dob", dob);
 
         // Send post request (login)
         try {
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(json.toString());
-            wr.flush();
-            wr.close();
+//            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+////            wr.writeBytes(json.toString());
+//            wr.flush();
+//            wr.close();
             int responseCode = con.getResponseCode();
 
             if (responseCode == HttpURLConnection.HTTP_OK) {

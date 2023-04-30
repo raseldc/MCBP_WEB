@@ -66,14 +66,14 @@
                 $("#lbAncFatherName").html(ancVerificationRespose.ancInformationDetail.fatherName);
                 $("#lbAncMotherName").html(ancVerificationRespose.ancInformationDetail.motherName);
                 $("#lbAncHusbandName").html(ancVerificationRespose.ancInformationDetail.husbandName);
-                $("#lbAncConceptionDuration").html(ancVerificationRespose.ancInformationDetail.pregnancyWeek);
+                $("#lbAncConceptionDuration").html(getNumberInBangla(ancVerificationRespose.ancInformationDetail.pregnancy_week));
 
 
                 $("#lbApplName").html(ancVerificationRespose.applicantDetail.fullNameInBangla);
                 $("#lbApplFatherName").html(ancVerificationRespose.applicantDetail.fatherName);
                 $("#lbApplMotherName").html(ancVerificationRespose.applicantDetail.motherName);
                 $("#lbApplHusbandName").html(ancVerificationRespose.applicantDetail.spouseName);
-                $("#lbApplConceptionDuration").html(ancVerificationRespose.applicantDetail.conceptionDuration);
+                $("#lbApplConceptionDuration").html(getNumberInBangla(ancVerificationRespose.applicantDetail.conceptionDuration.toString()));
 
                 return response;
             },
@@ -672,8 +672,9 @@
                                 <th><spring:message code="label.recommendation"/></th>
                                 <th><spring:message code="label.verification"/></th>
                                 <th><spring:message code="label.systemRecommendedStatus" /></th>
+                                <th><spring:message code="ancStatus" /></th>
                                 <th><spring:message code="view" var="tooltipView"/></th>
-                                <th><spring:message code="ancStatus" var="tooltipView"/></th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -738,11 +739,11 @@
                         </h3>
 
                     </div>
-                    <div class="modal-body" style="height: 603px">
+                    <div class="modal-body" style="height: 220px">
                         <div class="row col-lg-12">
                             <div class="col-lg-6">
-                                <div class="form-group col-lg-12">
-                                    <label class="col-md-8">Anc Information</label>
+                                <div class="form-group col-lg-12">                                    
+                                    <label class="col-md-8" ><spring:message code="dashboard.ancInformation" /> </label>
                                 </div>
                                 <div class="form-group col-lg-12">
                                     <label for="status" class="col-md-4 control-label"><spring:message code="label.nameBn" /></label>

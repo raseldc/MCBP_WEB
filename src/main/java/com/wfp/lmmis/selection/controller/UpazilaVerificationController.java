@@ -331,17 +331,19 @@ public class UpazilaVerificationController {
 //ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ")><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
 //ja.put("<a href=\"" + request.getContextPath() + "/applicant/viewApplicant/" + applicant.getId() + "\" ><span class=\"glyphicon glyphicon-edit\"></span></a>");
                 String viewDetails = localizer.getLocalizedText("viewDetails", LocaleContextHolder.getLocale());
-
-                ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
                 String ancStatus = "Not Check";
                 if (applicant.getAncStatus() == null) {
-                    ancStatus = "Not Check";
+                    ancStatus = "en".equals(locale.getLanguage()) ? "Not Check" : "যাচাই করা হয়নি";
                 } else if (applicant.getAncStatus() == 1) {
-                    ancStatus = "Accepted";
+                    ancStatus = "en".equals(locale.getLanguage()) ? "Accepted" : "সফল";
                 } else if (applicant.getAncStatus() == 2) {
-                    ancStatus = "Reject";
+                    ancStatus = "en".equals(locale.getLanguage()) ? "Reject" : "বাতিল";
                 }
-                ja.put("<a href=#" + " onclick=ancCardCheck(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"> </span>" + ancStatus + "</a>");
+                ja.put("<button type=\"button\" id=\"btnAncVerify\" class=\"btn bg-blue\" onclick=ancCardCheck(" + applicant.getId() + ") ><span class=\"glyphicon glyphicon-search\">&nbsp;</span>" + ancStatus + "</button>");
+                ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
+
+                //ja.put("<a href=#" + " onclick=ancCardCheck(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"> </span>" + ancStatus + "</a>");
+                //ja.put("<a href=#" + " onclick=ancCardCheck(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"> </span>" + ancStatus + "</a>");
                 dataArray.put(ja);
             }
 

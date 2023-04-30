@@ -8,16 +8,16 @@ public class ApplicantAncInformationDetail {
     private int applicantId;
     private int beneficiaryId;
     private String nid;
-    private String fatherName;
-    private String motherName;
-    private String husbandName;
-    private String name;
-    private String dob;
-    private String pregnancyWeek;
-    private String anc1;
-    private String anc2;
-    private String anc3;
-    private String anc4;
+    private String FatherName;
+    private String MotherName;
+    private String HusbandName;
+    private String Name;
+    private String DOB;
+    private String Pregnancy_week;
+    private String ANC1;
+    private String ANC2;
+    private String ANC3;
+    private String ANC4;
     private Integer modifiedBy;
     private Date modficationDate;
     private int createdBy;
@@ -56,83 +56,83 @@ public class ApplicantAncInformationDetail {
     }
 
     public String getFatherName() {
-        return fatherName;
+        return FatherName;
     }
 
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
+    public void setFatherName(String FatherName) {
+        this.FatherName = FatherName;
     }
 
     public String getMotherName() {
-        return motherName;
+        return MotherName;
     }
 
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
+    public void setMotherName(String MotherName) {
+        this.MotherName = MotherName;
     }
 
     public String getHusbandName() {
-        return husbandName;
+        return HusbandName;
     }
 
-    public void setHusbandName(String husbandName) {
-        this.husbandName = husbandName;
+    public void setHusbandName(String HusbandName) {
+        this.HusbandName = HusbandName;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public String getDob() {
-        return dob;
+    public String getDOB() {
+        return DOB;
     }
 
-    public void setDob(String dob) {
-        this.dob = dob;
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
 
-    public String getPregnancyWeek() {
-        return pregnancyWeek;
+    public String getPregnancy_week() {
+        return Pregnancy_week;
     }
 
-    public void setPregnancyWeek(String pregnancyWeek) {
-        this.pregnancyWeek = pregnancyWeek;
+    public void setPregnancy_week(String Pregnancy_week) {
+        this.Pregnancy_week = Pregnancy_week;
     }
 
-    public String getAnc1() {
-        return anc1;
+    public String getANC1() {
+        return ANC1;
     }
 
-    public void setAnc1(String anc1) {
-        this.anc1 = anc1;
+    public void setANC1(String ANC1) {
+        this.ANC1 = ANC1;
     }
 
-    public String getAnc2() {
-        return anc2;
+    public String getANC2() {
+        return ANC2;
     }
 
-    public void setAnc2(String anc2) {
-        this.anc2 = anc2;
+    public void setANC2(String ANC2) {
+        this.ANC2 = ANC2;
     }
 
-    public String getAnc3() {
-        return anc3;
+    public String getANC3() {
+        return ANC3;
     }
 
-    public void setAnc3(String anc3) {
-        this.anc3 = anc3;
+    public void setANC3(String ANC3) {
+        this.ANC3 = ANC3;
     }
 
-    public String getAnc4() {
-        return anc4;
+    public String getANC4() {
+        return ANC4;
     }
 
-    public void setAnc4(String anc4) {
-        this.anc4 = anc4;
+    public void setANC4(String ANC4) {
+        this.ANC4 = ANC4;
     }
 
     public Integer getModifiedBy() {
@@ -166,4 +166,5 @@ public class ApplicantAncInformationDetail {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
 }
