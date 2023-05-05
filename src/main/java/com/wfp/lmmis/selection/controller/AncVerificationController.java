@@ -76,7 +76,7 @@ public class AncVerificationController {
 //            applicantAncInformationDetail.setNid(applicant.getNid().toString());
 //
 //            applicantAncInformationDetail.setPregnancyWeek("12");
-
+            applicantAncInformationDetail.setNid(applicant.getNid().toString());
             AncVerificationRespose ancVerificationRespose = new AncVerificationRespose();
             ancVerificationRespose.setAncInformationDetail(applicantAncInformationDetail);
             ancVerificationRespose.setApplicantDetail(applicantDetail);
