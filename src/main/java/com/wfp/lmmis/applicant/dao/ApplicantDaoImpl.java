@@ -1750,6 +1750,12 @@ public class ApplicantDaoImpl implements ApplicantDao {
         }
     }
 
+    public ApplicantAncInformation getAncInformationByApplicantId(int applicantId) {
+        com.wfp.lmmis.applicant.model.ApplicantAncInformation applicantAncInformationDB = (com.wfp.lmmis.applicant.model.ApplicantAncInformation) sessionFactory.getCurrentSession().createQuery("SELECT a FROM ApplicantAncInformation a WHERE a.applicant.Id =:applicantId")
+                .setParameter("applicantId", applicantId).uniqueResult();
+        return applicantAncInformationDB;
+    }
+
     @Override
     public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose) {
         try {

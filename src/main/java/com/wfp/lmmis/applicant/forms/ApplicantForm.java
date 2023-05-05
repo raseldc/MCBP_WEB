@@ -46,8 +46,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Philip
  */
-public class ApplicantForm
-{
+public class ApplicantForm {
 
     private Integer id;
     private Scheme scheme;
@@ -150,23 +149,39 @@ public class ApplicantForm
     private boolean isBgmeaAvailable;
     private boolean isBkmeaAvailable;
 
-    public Integer getId()
-    {
+    //set anc information
+    private ConceptionTerm ancConceptionTerm;
+    private String ancConceptionDuration;
+
+    public ConceptionTerm getAncConceptionTerm() {
+        return ancConceptionTerm;
+    }
+
+    public void setAncConceptionTerm(ConceptionTerm ancConceptionTerm) {
+        this.ancConceptionTerm = ancConceptionTerm;
+    }
+
+    public String getAncConceptionDuration() {
+        return ancConceptionDuration;
+    }
+
+    public void setAncConceptionDuration(String ancConceptionDuration) {
+        this.ancConceptionDuration = ancConceptionDuration;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Scheme getScheme()
-    {
+    public Scheme getScheme() {
         return scheme;
     }
 
-    public void setScheme(Scheme scheme)
-    {
+    public void setScheme(Scheme scheme) {
         this.scheme = scheme;
     }
 
@@ -174,18 +189,15 @@ public class ApplicantForm
      *
      * @return
      */
-    public FiscalYear getFiscalYear()
-    {
+    public FiscalYear getFiscalYear() {
         return fiscalYear;
     }
 
-    public void setFiscalYear(FiscalYear fiscalYear)
-    {
+    public void setFiscalYear(FiscalYear fiscalYear) {
         this.fiscalYear = fiscalYear;
     }
 
-    public String getFullNameInEnglish()
-    {
+    public String getFullNameInEnglish() {
         return fullNameInEnglish;
     }
 
@@ -193,13 +205,11 @@ public class ApplicantForm
      *
      * @param fullNameInEnglish
      */
-    public void setFullNameInEnglish(String fullNameInEnglish)
-    {
+    public void setFullNameInEnglish(String fullNameInEnglish) {
         this.fullNameInEnglish = fullNameInEnglish;
     }
 
-    public String getFullNameInBangla()
-    {
+    public String getFullNameInBangla() {
         return fullNameInBangla;
     }
 
@@ -207,38 +217,31 @@ public class ApplicantForm
      *
      * @param fullNameInBangla
      */
-    public void setFullNameInBangla(String fullNameInBangla)
-    {
+    public void setFullNameInBangla(String fullNameInBangla) {
         this.fullNameInBangla = fullNameInBangla;
     }
 
-    public String getFatherName()
-    {
+    public String getFatherName() {
         return fatherName;
     }
 
-    public void setFatherName(String fatherName)
-    {
+    public void setFatherName(String fatherName) {
         this.fatherName = fatherName;
     }
 
-    public String getMotherName()
-    {
+    public String getMotherName() {
         return motherName;
     }
 
-    public void setMotherName(String motherName)
-    {
+    public void setMotherName(String motherName) {
         this.motherName = motherName;
     }
 
-    public String getSpouseName()
-    {
+    public String getSpouseName() {
         return spouseName;
     }
 
-    public void setSpouseName(String spouseName)
-    {
+    public void setSpouseName(String spouseName) {
         this.spouseName = spouseName;
     }
 
@@ -246,33 +249,27 @@ public class ApplicantForm
      *
      * @return
      */
-    public String getNickName()
-    {
+    public String getNickName() {
         return nickName;
     }
 
-    public void setNickName(String nickName)
-    {
+    public void setNickName(String nickName) {
         this.nickName = nickName;
     }
 
-    public Calendar getDateOfBirth()
-    {
+    public Calendar getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Calendar dateOfBirth)
-    {
+    public void setDateOfBirth(Calendar dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getNid()
-    {
+    public String getNid() {
         return nid;
     }
 
-    public void setNid(String nid)
-    {
+    public void setNid(String nid) {
         this.nid = nid;
     }
 
@@ -280,23 +277,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public District getBirthPlace()
-    {
+    public District getBirthPlace() {
         return birthPlace;
     }
 
-    public void setBirthPlace(District birthPlace)
-    {
+    public void setBirthPlace(District birthPlace) {
         this.birthPlace = birthPlace;
     }
 
-    public EducationLevelEnum getEducationLevelEnum()
-    {
+    public EducationLevelEnum getEducationLevelEnum() {
         return educationLevelEnum;
     }
 
-    public void setEducationLevelEnum(EducationLevelEnum educationLevelEnum)
-    {
+    public void setEducationLevelEnum(EducationLevelEnum educationLevelEnum) {
         this.educationLevelEnum = educationLevelEnum;
     }
 
@@ -304,28 +297,23 @@ public class ApplicantForm
      *
      * @return
      */
-    public ReligionEnum getReligionEnum()
-    {
+    public ReligionEnum getReligionEnum() {
         return religionEnum;
     }
 
-    public void setReligionEnum(ReligionEnum religionEnum)
-    {
+    public void setReligionEnum(ReligionEnum religionEnum) {
         this.religionEnum = religionEnum;
     }
 
-    public MaritalInfoEnum getMaritalInfoEnum()
-    {
+    public MaritalInfoEnum getMaritalInfoEnum() {
         return maritalInfoEnum;
     }
 
-    public void setMaritalInfoEnum(MaritalInfoEnum maritalInfoEnum)
-    {
+    public void setMaritalInfoEnum(MaritalInfoEnum maritalInfoEnum) {
         this.maritalInfoEnum = maritalInfoEnum;
     }
 
-    public Gender getGender()
-    {
+    public Gender getGender() {
         return gender;
     }
 
@@ -333,53 +321,43 @@ public class ApplicantForm
      *
      * @param gender
      */
-    public void setGender(Gender gender)
-    {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public String getMobileNo()
-    {
+    public String getMobileNo() {
         return mobileNo;
     }
 
-    public void setMobileNo(String mobileNo)
-    {
+    public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
 
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public BloodGroup getBloodGroup()
-    {
+    public BloodGroup getBloodGroup() {
         return bloodGroup;
     }
 
-    public void setBloodGroup(BloodGroup bloodGroup)
-    {
+    public void setBloodGroup(BloodGroup bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
 
-    public Boolean getNrb()
-    {
+    public Boolean getNrb() {
         return nrb;
     }
 
-    public void setNrb(Boolean nrb)
-    {
+    public void setNrb(Boolean nrb) {
         this.nrb = nrb;
     }
 
-    public Boolean getBeneficiaryInOtherScheme()
-    {
+    public Boolean getBeneficiaryInOtherScheme() {
         return beneficiaryInOtherScheme;
     }
 
@@ -387,28 +365,23 @@ public class ApplicantForm
      *
      * @param beneficiaryInOtherScheme
      */
-    public void setBeneficiaryInOtherScheme(Boolean beneficiaryInOtherScheme)
-    {
+    public void setBeneficiaryInOtherScheme(Boolean beneficiaryInOtherScheme) {
         this.beneficiaryInOtherScheme = beneficiaryInOtherScheme;
     }
 
-    public ApplicationStatus getApplicationStatus()
-    {
+    public ApplicationStatus getApplicationStatus() {
         return applicationStatus;
     }
 
-    public void setApplicationStatus(ApplicationStatus applicationStatus)
-    {
+    public void setApplicationStatus(ApplicationStatus applicationStatus) {
         this.applicationStatus = applicationStatus;
     }
 
-    public Boolean getFieldVerificationDone()
-    {
+    public Boolean getFieldVerificationDone() {
         return fieldVerificationDone;
     }
 
-    public void setFieldVerificationDone(Boolean fieldVerificationDone)
-    {
+    public void setFieldVerificationDone(Boolean fieldVerificationDone) {
         this.fieldVerificationDone = fieldVerificationDone;
     }
 
@@ -416,18 +389,15 @@ public class ApplicantForm
      *
      * @return
      */
-    public Occupation getOccupation()
-    {
+    public Occupation getOccupation() {
         return occupation;
     }
 
-    public void setOccupation(Occupation occupation)
-    {
+    public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
     }
 
-    public ApplicantType getApplicantType()
-    {
+    public ApplicantType getApplicantType() {
         return applicantType;
     }
 
@@ -435,33 +405,27 @@ public class ApplicantForm
      *
      * @param applicantType
      */
-    public void setApplicantType(ApplicantType applicantType)
-    {
+    public void setApplicantType(ApplicantType applicantType) {
         this.applicantType = applicantType;
     }
 
-    public Factory getBgmeaFactory()
-    {
+    public Factory getBgmeaFactory() {
         return bgmeaFactory;
     }
 
-    public void setBgmeaFactory(Factory bgmeaFactory)
-    {
+    public void setBgmeaFactory(Factory bgmeaFactory) {
         this.bgmeaFactory = bgmeaFactory;
     }
 
-    public Factory getBkmeaFactory()
-    {
+    public Factory getBkmeaFactory() {
         return bkmeaFactory;
     }
 
-    public void setBkmeaFactory(Factory bkmeaFactory)
-    {
+    public void setBkmeaFactory(Factory bkmeaFactory) {
         this.bkmeaFactory = bkmeaFactory;
     }
 
-    public String getPresentAddressLine1()
-    {
+    public String getPresentAddressLine1() {
         return presentAddressLine1;
     }
 
@@ -469,43 +433,35 @@ public class ApplicantForm
      *
      * @param presentAddressLine1
      */
-    public void setPresentAddressLine1(String presentAddressLine1)
-    {
+    public void setPresentAddressLine1(String presentAddressLine1) {
         this.presentAddressLine1 = presentAddressLine1;
     }
 
-    public String getPresentAddressLine2()
-    {
+    public String getPresentAddressLine2() {
         return presentAddressLine2;
     }
 
-    public void setPresentAddressLine2(String presentAddressLine2)
-    {
+    public void setPresentAddressLine2(String presentAddressLine2) {
         this.presentAddressLine2 = presentAddressLine2;
     }
 
-    public Division getPresentDivision()
-    {
+    public Division getPresentDivision() {
         return presentDivision;
     }
 
-    public void setPresentDivision(Division presentDivision)
-    {
+    public void setPresentDivision(Division presentDivision) {
         this.presentDivision = presentDivision;
     }
 
-    public District getPresentDistrict()
-    {
+    public District getPresentDistrict() {
         return presentDistrict;
     }
 
-    public void setPresentDistrict(District presentDistrict)
-    {
+    public void setPresentDistrict(District presentDistrict) {
         this.presentDistrict = presentDistrict;
     }
 
-    public Upazilla getPresentUpazila()
-    {
+    public Upazilla getPresentUpazila() {
         return presentUpazila;
     }
 
@@ -513,43 +469,35 @@ public class ApplicantForm
      *
      * @param presentUpazila
      */
-    public void setPresentUpazila(Upazilla presentUpazila)
-    {
+    public void setPresentUpazila(Upazilla presentUpazila) {
         this.presentUpazila = presentUpazila;
     }
 
-    public Union getPresentUnion()
-    {
+    public Union getPresentUnion() {
         return presentUnion;
     }
 
-    public void setPresentUnion(Union presentUnion)
-    {
+    public void setPresentUnion(Union presentUnion) {
         this.presentUnion = presentUnion;
     }
 
-    public String getPresentWardNo()
-    {
+    public String getPresentWardNo() {
         return presentWardNo;
     }
 
-    public void setPresentWardNo(String presentWardNo)
-    {
+    public void setPresentWardNo(String presentWardNo) {
         this.presentWardNo = presentWardNo;
     }
 
-    public String getPresentPostCode()
-    {
+    public String getPresentPostCode() {
         return presentPostCode;
     }
 
-    public void setPresentPostCode(String presentPostCode)
-    {
+    public void setPresentPostCode(String presentPostCode) {
         this.presentPostCode = presentPostCode;
     }
 
-    public String getPermanentAddressLine1()
-    {
+    public String getPermanentAddressLine1() {
         return permanentAddressLine1;
     }
 
@@ -557,33 +505,27 @@ public class ApplicantForm
      *
      * @param permanentAddressLine1
      */
-    public void setPermanentAddressLine1(String permanentAddressLine1)
-    {
+    public void setPermanentAddressLine1(String permanentAddressLine1) {
         this.permanentAddressLine1 = permanentAddressLine1;
     }
 
-    public String getPermanentAddressLine2()
-    {
+    public String getPermanentAddressLine2() {
         return permanentAddressLine2;
     }
 
-    public void setPermanentAddressLine2(String permanentAddressLine2)
-    {
+    public void setPermanentAddressLine2(String permanentAddressLine2) {
         this.permanentAddressLine2 = permanentAddressLine2;
     }
 
-    public Division getPermanentDivision()
-    {
+    public Division getPermanentDivision() {
         return permanentDivision;
     }
 
-    public void setPermanentDivision(Division permanentDivision)
-    {
+    public void setPermanentDivision(Division permanentDivision) {
         this.permanentDivision = permanentDivision;
     }
 
-    public District getPermanentDistrict()
-    {
+    public District getPermanentDistrict() {
         return permanentDistrict;
     }
 
@@ -591,13 +533,11 @@ public class ApplicantForm
      *
      * @param permanentDistrict
      */
-    public void setPermanentDistrict(District permanentDistrict)
-    {
+    public void setPermanentDistrict(District permanentDistrict) {
         this.permanentDistrict = permanentDistrict;
     }
 
-    public Upazilla getPermanentUpazila()
-    {
+    public Upazilla getPermanentUpazila() {
         return permanentUpazila;
     }
 
@@ -605,18 +545,15 @@ public class ApplicantForm
      *
      * @param permanentUpazila
      */
-    public void setPermanentUpazila(Upazilla permanentUpazila)
-    {
+    public void setPermanentUpazila(Upazilla permanentUpazila) {
         this.permanentUpazila = permanentUpazila;
     }
 
-    public Union getPermanentUnion()
-    {
+    public Union getPermanentUnion() {
         return permanentUnion;
     }
 
-    public void setPermanentUnion(Union permanentUnion)
-    {
+    public void setPermanentUnion(Union permanentUnion) {
         this.permanentUnion = permanentUnion;
     }
 
@@ -624,23 +561,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public String getPermanentWardNo()
-    {
+    public String getPermanentWardNo() {
         return permanentWardNo;
     }
 
-    public void setPermanentWardNo(String permanentWardNo)
-    {
+    public void setPermanentWardNo(String permanentWardNo) {
         this.permanentWardNo = permanentWardNo;
     }
 
-    public String getPermanentPostCode()
-    {
+    public String getPermanentPostCode() {
         return permanentPostCode;
     }
 
-    public void setPermanentPostCode(String permanentPostCode)
-    {
+    public void setPermanentPostCode(String permanentPostCode) {
         this.permanentPostCode = permanentPostCode;
     }
 
@@ -648,23 +581,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public PaymentTypeEnum getPaymentType()
-    {
+    public PaymentTypeEnum getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(PaymentTypeEnum paymentType)
-    {
+    public void setPaymentType(PaymentTypeEnum paymentType) {
         this.paymentType = paymentType;
     }
 
-    public Bank getBank()
-    {
+    public Bank getBank() {
         return bank;
     }
 
-    public void setBank(Bank bank)
-    {
+    public void setBank(Bank bank) {
         this.bank = bank;
     }
 
@@ -672,23 +601,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public Branch getBranch()
-    {
+    public Branch getBranch() {
         return branch;
     }
 
-    public void setBranch(Branch branch)
-    {
+    public void setBranch(Branch branch) {
         this.branch = branch;
     }
 
-    public MobileBankingProvider getMobileBankingProvider()
-    {
+    public MobileBankingProvider getMobileBankingProvider() {
         return mobileBankingProvider;
     }
 
-    public void setMobileBankingProvider(MobileBankingProvider mobileBankingProvider)
-    {
+    public void setMobileBankingProvider(MobileBankingProvider mobileBankingProvider) {
         this.mobileBankingProvider = mobileBankingProvider;
     }
 
@@ -696,63 +621,51 @@ public class ApplicantForm
      *
      * @return
      */
-    public PostOfficeBranch getPostOfficeBranch()
-    {
+    public PostOfficeBranch getPostOfficeBranch() {
         return postOfficeBranch;
     }
 
-    public void setPostOfficeBranch(PostOfficeBranch postOfficeBranch)
-    {
+    public void setPostOfficeBranch(PostOfficeBranch postOfficeBranch) {
         this.postOfficeBranch = postOfficeBranch;
     }
 
-    public AccountType getAccountType()
-    {
+    public AccountType getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType)
-    {
+    public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
 
-    public AccountType getAccountTypePO()
-    {
+    public AccountType getAccountTypePO() {
         return accountTypePO;
     }
 
-    public void setAccountTypePO(AccountType accountTypePO)
-    {
+    public void setAccountTypePO(AccountType accountTypePO) {
         this.accountTypePO = accountTypePO;
     }
 
-    public String getAccountName()
-    {
+    public String getAccountName() {
         return accountName;
     }
 
-    public void setAccountName(String accountName)
-    {
+    public void setAccountName(String accountName) {
         this.accountName = accountName;
     }
 
-    public String getAccountNo()
-    {
+    public String getAccountNo() {
         return accountNo;
     }
 
-    public void setAccountNo(String accountNo)
-    {
+    public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
-    public ConceptionTerm getConceptionTerm()
-    {
+    public ConceptionTerm getConceptionTerm() {
         return conceptionTerm;
     }
 
-    public void setConceptionTerm(ConceptionTerm conceptionTerm)
-    {
+    public void setConceptionTerm(ConceptionTerm conceptionTerm) {
         this.conceptionTerm = conceptionTerm;
     }
 
@@ -760,43 +673,35 @@ public class ApplicantForm
      *
      * @return
      */
-    public Integer getConceptionDuration()
-    {
+    public Integer getConceptionDuration() {
         return conceptionDuration;
     }
 
-    public void setConceptionDuration(Integer conceptionDuration)
-    {
+    public void setConceptionDuration(Integer conceptionDuration) {
         this.conceptionDuration = conceptionDuration;
     }
 
-    public String getPhotoPath()
-    {
+    public String getPhotoPath() {
         return photoPath;
     }
 
-    public void setPhotoPath(String photoPath)
-    {
+    public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
     }
 
-    public MultipartFile getPhoto()
-    {
+    public MultipartFile getPhoto() {
         return photo;
     }
 
-    public void setPhoto(MultipartFile photo)
-    {
+    public void setPhoto(MultipartFile photo) {
         this.photo = photo;
     }
 
-    public String getSignaturePath()
-    {
+    public String getSignaturePath() {
         return signaturePath;
     }
 
-    public void setSignaturePath(String signaturePath)
-    {
+    public void setSignaturePath(String signaturePath) {
         this.signaturePath = signaturePath;
     }
 
@@ -804,33 +709,27 @@ public class ApplicantForm
      *
      * @return
      */
-    public MultipartFile getSignature()
-    {
+    public MultipartFile getSignature() {
         return signature;
     }
 
-    public void setSignature(MultipartFile signature)
-    {
+    public void setSignature(MultipartFile signature) {
         this.signature = signature;
     }
 
-    public String getPhotoData()
-    {
+    public String getPhotoData() {
         return photoData;
     }
 
-    public void setPhotoData(String photoData)
-    {
+    public void setPhotoData(String photoData) {
         this.photoData = photoData;
     }
 
-    public String getSignatureData()
-    {
+    public String getSignatureData() {
         return signatureData;
     }
 
-    public void setSignatureData(String signatureData)
-    {
+    public void setSignatureData(String signatureData) {
         this.signatureData = signatureData;
     }
 
@@ -838,18 +737,15 @@ public class ApplicantForm
      *
      * @return
      */
-    public boolean isIsDivisionAvailable()
-    {
+    public boolean isIsDivisionAvailable() {
         return isDivisionAvailable;
     }
 
-    public void setIsDivisionAvailable(boolean isDivisionAvailable)
-    {
+    public void setIsDivisionAvailable(boolean isDivisionAvailable) {
         this.isDivisionAvailable = isDivisionAvailable;
     }
 
-    public boolean isIsDistrictAvailable()
-    {
+    public boolean isIsDistrictAvailable() {
         return isDistrictAvailable;
     }
 
@@ -857,28 +753,23 @@ public class ApplicantForm
      *
      * @param isDistrictAvailable
      */
-    public void setIsDistrictAvailable(boolean isDistrictAvailable)
-    {
+    public void setIsDistrictAvailable(boolean isDistrictAvailable) {
         this.isDistrictAvailable = isDistrictAvailable;
     }
 
-    public boolean isIsUpazilaAvailable()
-    {
+    public boolean isIsUpazilaAvailable() {
         return isUpazilaAvailable;
     }
 
-    public void setIsUpazilaAvailable(boolean isUpazilaAvailable)
-    {
+    public void setIsUpazilaAvailable(boolean isUpazilaAvailable) {
         this.isUpazilaAvailable = isUpazilaAvailable;
     }
 
-    public boolean isIsUnionAvailable()
-    {
+    public boolean isIsUnionAvailable() {
         return isUnionAvailable;
     }
 
-    public void setIsUnionAvailable(boolean isUnionAvailable)
-    {
+    public void setIsUnionAvailable(boolean isUnionAvailable) {
         this.isUnionAvailable = isUnionAvailable;
     }
 
@@ -891,24 +782,19 @@ public class ApplicantForm
 //    {
 //        this.batch = batch;
 //    }
-
     /**
      *
      * @return
      */
-
-    public List<MultipartFile> getMultipartFileList()
-    {
+    public List<MultipartFile> getMultipartFileList() {
         return multipartFileList;
     }
 
-    public void setMultipartFileList(List<MultipartFile> multipartFileList)
-    {
+    public void setMultipartFileList(List<MultipartFile> multipartFileList) {
         this.multipartFileList = multipartFileList;
     }
 
-    public List<ApplicantAttachment> getAttachmentList()
-    {
+    public List<ApplicantAttachment> getAttachmentList() {
         return attachmentList;
     }
 
@@ -916,18 +802,15 @@ public class ApplicantForm
      *
      * @param attachmentList
      */
-    public void setAttachmentList(List<ApplicantAttachment> attachmentList)
-    {
+    public void setAttachmentList(List<ApplicantAttachment> attachmentList) {
         this.attachmentList = attachmentList;
     }
 
-    public String getRemoveList()
-    {
+    public String getRemoveList() {
         return removeList;
     }
 
-    public void setRemoveList(String removeList)
-    {
+    public void setRemoveList(String removeList) {
         this.removeList = removeList;
     }
 
@@ -935,13 +818,11 @@ public class ApplicantForm
      *
      * @return
      */
-    public MonthlyIncome getMonthlyIncome()
-    {
+    public MonthlyIncome getMonthlyIncome() {
         return monthlyIncome;
     }
 
-    public void setMonthlyIncome(MonthlyIncome monthlyIncome)
-    {
+    public void setMonthlyIncome(MonthlyIncome monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 
@@ -949,23 +830,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public DisabilityInFamily getDisability()
-    {
+    public DisabilityInFamily getDisability() {
         return disability;
     }
 
-    public void setDisability(DisabilityInFamily disability)
-    {
+    public void setDisability(DisabilityInFamily disability) {
         this.disability = disability;
     }
 
-    public HHWallMadeOf gethHWallMadeOf()
-    {
+    public HHWallMadeOf gethHWallMadeOf() {
         return hHWallMadeOf;
     }
 
-    public void sethHWallMadeOf(HHWallMadeOf hHWallMadeOf)
-    {
+    public void sethHWallMadeOf(HHWallMadeOf hHWallMadeOf) {
         this.hHWallMadeOf = hHWallMadeOf;
     }
 
@@ -973,13 +850,11 @@ public class ApplicantForm
      *
      * @return
      */
-    public LandSize getLandSizeRural()
-    {
+    public LandSize getLandSizeRural() {
         return landSizeRural;
     }
 
-    public void setLandSizeRural(LandSize landSizeRural)
-    {
+    public void setLandSizeRural(LandSize landSizeRural) {
         this.landSizeRural = landSizeRural;
     }
 
@@ -987,13 +862,11 @@ public class ApplicantForm
      *
      * @return
      */
-    public OccupationRural getOccupationRural()
-    {
+    public OccupationRural getOccupationRural() {
         return occupationRural;
     }
 
-    public void setOccupationRural(OccupationRural occupationRural)
-    {
+    public void setOccupationRural(OccupationRural occupationRural) {
         this.occupationRural = occupationRural;
     }
 
@@ -1001,23 +874,19 @@ public class ApplicantForm
      *
      * @return
      */
-    public YesNoEnum gethASLatrineRural()
-    {
+    public YesNoEnum gethASLatrineRural() {
         return hASLatrineRural;
     }
 
-    public void sethASLatrineRural(YesNoEnum hASLatrineRural)
-    {
+    public void sethASLatrineRural(YesNoEnum hASLatrineRural) {
         this.hASLatrineRural = hASLatrineRural;
     }
 
-    public YesNoEnum gethASTubewellRural()
-    {
+    public YesNoEnum gethASTubewellRural() {
         return hASTubewellRural;
     }
 
-    public void sethASTubewellRural(YesNoEnum hASTubewellRural)
-    {
+    public void sethASTubewellRural(YesNoEnum hASTubewellRural) {
         this.hASTubewellRural = hASTubewellRural;
     }
 
@@ -1025,33 +894,27 @@ public class ApplicantForm
      *
      * @return
      */
-    public YesNoEnum getHasResidenceUrban()
-    {
+    public YesNoEnum getHasResidenceUrban() {
         return hasResidenceUrban;
     }
 
-    public void setHasResidenceUrban(YesNoEnum hasResidenceUrban)
-    {
+    public void setHasResidenceUrban(YesNoEnum hasResidenceUrban) {
         this.hasResidenceUrban = hasResidenceUrban;
     }
 
-    public OccupationUrban getOccupationUrban()
-    {
+    public OccupationUrban getOccupationUrban() {
         return occupationUrban;
     }
 
-    public void setOccupationUrban(OccupationUrban occupationUrban)
-    {
+    public void setOccupationUrban(OccupationUrban occupationUrban) {
         this.occupationUrban = occupationUrban;
     }
 
-    public YesNoEnum gethASKitchenUrban()
-    {
+    public YesNoEnum gethASKitchenUrban() {
         return hASKitchenUrban;
     }
 
-    public void sethASKitchenUrban(YesNoEnum hASKitchenUrban)
-    {
+    public void sethASKitchenUrban(YesNoEnum hASKitchenUrban) {
         this.hASKitchenUrban = hASKitchenUrban;
     }
 
@@ -1059,33 +922,27 @@ public class ApplicantForm
      *
      * @return
      */
-    public YesNoEnum gethASElectricity()
-    {
+    public YesNoEnum gethASElectricity() {
         return hASElectricity;
     }
 
-    public void sethASElectricity(YesNoEnum hASElectricity)
-    {
+    public void sethASElectricity(YesNoEnum hASElectricity) {
         this.hASElectricity = hASElectricity;
     }
 
-    public YesNoEnum gethASElectricFan()
-    {
+    public YesNoEnum gethASElectricFan() {
         return hASElectricFan;
     }
 
-    public void sethASElectricFan(YesNoEnum hASElectricFan)
-    {
+    public void sethASElectricFan(YesNoEnum hASElectricFan) {
         this.hASElectricFan = hASElectricFan;
     }
 
-    public YesNoEnum gethASTelivisionUrban()
-    {
+    public YesNoEnum gethASTelivisionUrban() {
         return hASTelivisionUrban;
     }
 
-    public void sethASTelivisionUrban(YesNoEnum hASTelivisionUrban)
-    {
+    public void sethASTelivisionUrban(YesNoEnum hASTelivisionUrban) {
         this.hASTelivisionUrban = hASTelivisionUrban;
     }
 
@@ -1093,13 +950,11 @@ public class ApplicantForm
      *
      * @return
      */
-    public boolean isIsBgmeaAvailable()
-    {
+    public boolean isIsBgmeaAvailable() {
         return isBgmeaAvailable;
     }
 
-    public void setIsBgmeaAvailable(boolean isBgmeaAvailable)
-    {
+    public void setIsBgmeaAvailable(boolean isBgmeaAvailable) {
         this.isBgmeaAvailable = isBgmeaAvailable;
     }
 
@@ -1107,36 +962,28 @@ public class ApplicantForm
      *
      * @return
      */
-    public boolean isIsBkmeaAvailable()
-    {
+    public boolean isIsBkmeaAvailable() {
         return isBkmeaAvailable;
     }
 
-    public void setIsBkmeaAvailable(boolean isBkmeaAvailable)
-    {
+    public void setIsBkmeaAvailable(boolean isBkmeaAvailable) {
         this.isBkmeaAvailable = isBkmeaAvailable;
     }
 
-    public Village getPresentVillage()
-    {
+    public Village getPresentVillage() {
         return presentVillage;
     }
 
-    public void setPresentVillage(Village presentVillage)
-    {
+    public void setPresentVillage(Village presentVillage) {
         this.presentVillage = presentVillage;
     }
 
-    public Village getPermanentVillage()
-    {
+    public Village getPermanentVillage() {
         return permanentVillage;
     }
 
-    public void setPermanentVillage(Village permanentVillage)
-    {
+    public void setPermanentVillage(Village permanentVillage) {
         this.permanentVillage = permanentVillage;
     }
-
-   
 
 }

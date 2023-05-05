@@ -7,6 +7,7 @@ package com.wfp.lmmis.applicant.service;
 
 import com.wfp.lmmis.applicant.dao.ApplicantDao;
 import com.wfp.lmmis.applicant.model.Applicant;
+import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
 import com.wfp.lmmis.report.data.ApplicantReportData;
@@ -211,5 +212,9 @@ public class ApplicantServiceImpl implements ApplicantService {
     @Override
     public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose) {
         return applicantDao.updateApplicantAncStatus(ancVerificationRespose);
+    }
+
+    public ApplicantAncInformation getAncInformationByApplicantId(int applicantId) {
+        return applicantDao.getAncInformationByApplicantId(applicantId);
     }
 }

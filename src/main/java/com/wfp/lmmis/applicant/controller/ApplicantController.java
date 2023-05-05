@@ -3,13 +3,16 @@ package com.wfp.lmmis.applicant.controller;
 import com.wfp.lmmis.applicant.editor.SchemeAttributeEditor;
 import com.wfp.lmmis.applicant.forms.ApplicantForm;
 import com.wfp.lmmis.applicant.model.Applicant;
+import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.applicant.model.ApplicantAttachment;
 import com.wfp.lmmis.applicant.model.ApplicantBiometricInfo;
 import com.wfp.lmmis.applicant.model.ApplicantSocioEconomicInfo;
 import com.wfp.lmmis.applicant.model.ApplicantView;
+import com.wfp.lmmis.applicant.service.ApplicantAncInformationService;
 import com.wfp.lmmis.applicant.service.ApplicantService;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.enums.AttachmentType;
+import com.wfp.lmmis.enums.ConceptionTerm;
 import com.wfp.lmmis.enums.UserType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
 import com.wfp.lmmis.form.SearchParameterForm;
@@ -102,7 +105,8 @@ public class ApplicantController {
 
     @Autowired
     private VillageService villageService;
-
+    @Autowired
+    private ApplicantAncInformationService applicantAncInformationService;
     Localizer localizer = Localizer.getBrowserLocalizer();
 
     @InitBinder
@@ -1101,10 +1105,18 @@ public class ApplicantController {
     public String editApplicantInformation(@PathVariable("id") Integer id, @ModelAttribute ApplicantForm applicantForm, Model model, boolean applicantLoadRequired, HttpSession session) throws ExceptionWrapper {
         try {
             Applicant applicant = !applicantLoadRequired ? this.applicantService.getApplicant(id) : null;
+            ApplicantAncInformation applicantAncInformation = this.applicantAncInformationService.getAncInformationByApplicantId(applicant.getId());
+
+            if (applicantAncInformation == null) {
+                model.addAttribute("getAncInfo", "0");
+            } else {
+                model.addAttribute("getAncInfo", "1");
+            }
             loadBasicInfo(applicantForm, applicant);
             loadAddressInfo(applicantForm, applicant);
             loadSocioEconomicInfo(applicantForm, applicant);
             loadHealthStatusInfo(applicantForm, applicant);
+            loadANCInfo(applicantForm, applicantAncInformation);
             loadPaymentInfo(applicantForm, applicant);
             loadBiometricInfo(applicantForm, applicant);
             loadAttachmentInfo(applicantForm, applicant);
@@ -1197,6 +1209,21 @@ public class ApplicantController {
         applicantForm.setBloodGroup(applicant.getBloodGroup());
         applicantForm.setNrb(applicant.getNrb());
         applicantForm.setBeneficiaryInOtherScheme(applicant.getBeneficiaryInOtherScheme());
+    }
+
+    private void loadANCInfo(ApplicantForm applicantForm, ApplicantAncInformation ancInformation) {
+        if (ancInformation == null) {
+
+        } else {
+            if ("en".equals(LocaleContextHolder.getLocale().getLanguage())) {
+                applicantForm.setAncConceptionTerm(ConceptionTerm.FIRSTCONCEPTION);
+                applicantForm.setAncConceptionDuration(ancInformation.getPregnancyWeek());
+            } else {
+                applicantForm.setAncConceptionTerm(ConceptionTerm.FIRSTCONCEPTION);
+                applicantForm.setAncConceptionDuration(CommonUtility.getNumberInBangla(ancInformation.getPregnancyWeek()));
+            }
+        }
+
     }
 
     private void loadAddressInfo(ApplicantForm applicantForm, Applicant applicant) {

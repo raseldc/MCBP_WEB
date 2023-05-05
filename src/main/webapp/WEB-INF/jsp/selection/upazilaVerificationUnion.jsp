@@ -37,7 +37,7 @@
         $.ajax(
                 {
                     type: 'POST',
-                    url: "${Contexpath}/anc-update",
+                    url: contextPath + "/anc-update",
                     contentType: 'application/json; charset=utf-8',
                     data: ancVerificationResposeData,
                     dataType: 'json',

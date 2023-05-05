@@ -1535,8 +1535,39 @@
                                 </div>
                             </div>  
                         </fieldset>
-                        <fieldset>
-                            <legend>
+                    <c:if test="${actionType ne 'create'}">
+                        <c:if test="${getAncInfo eq '1'}">
+
+
+                            <fieldset>
+                                <legend>
+                                    <spring:message code='dashboard.ancInformation' var="healthInfoTab"/>${healthInfoTab}
+                                </legend>
+                                <div class="form-group">
+                                    <label for="" class="col-md-4 control-label"><spring:message code="label.conceptionTerm" /><span class="mandatory">*</span></label>
+                                    <div class="col-md-8">
+                                        <form:select class="form-control" path="ancConceptionTerm" disabled="true" >
+                                            <form:option value="" label="${select}"></form:option>
+                                            <form:options items="${conceptionTermEnum}"  itemLabel="${displayName}"></form:options>
+                                        </form:select>
+                                    </div>            
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-md-4 control-label">
+                                        <spring:message code='label.conceptionDuration'/>    
+                                        <spring:message code='label.conceptionDuration' var='conceptionDuration'/>
+
+                                    </label>
+                                    <div class="col-md-8">
+                                        <form:input class="form-control" placeholder="${conceptionDuration}" path="ancConceptionDuration" readonly="true"/>
+                                        <form:errors path="conceptionDuration" cssStyle="color:red"></form:errors>
+                                        </div>
+                                    </div>  
+                                </fieldset>
+                        </c:if>    
+                    </c:if>
+                    <fieldset>
+                        <legend>
                             <spring:message code='label.BankAccountInfoTab' var="bankAccountInfoTab"/>${bankAccountInfoTab}
                         </legend>
                         <div class="form-group">

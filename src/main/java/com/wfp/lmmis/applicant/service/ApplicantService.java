@@ -6,6 +6,7 @@
 package com.wfp.lmmis.applicant.service;
 
 import com.wfp.lmmis.applicant.model.Applicant;
+import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
 import com.wfp.lmmis.report.data.ApplicantReportData;
@@ -113,6 +114,8 @@ public interface ApplicantService {
      * @return
      */
     public boolean checkUniqueAccountNumberAtApplicationSave(String accountNumber, Integer appId);
-    
+
     public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose);
+
+    public ApplicantAncInformation getAncInformationByApplicantId(int applicantId);
 }
