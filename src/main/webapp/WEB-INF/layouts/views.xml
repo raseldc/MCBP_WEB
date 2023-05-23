@@ -858,5 +858,10 @@
         <put-attribute name="title" value="title.editPaymentInfo"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/jsp/beneficiary/editBeneficiaryPaymentInfo.jsp" />
     </definition>
+    
+    <definition name="ancReportUnion" extends="DefaultTemplate">
+        <put-attribute name="title" value="title.beneficiaryReport"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/report/anc/ancReportUnion.jsp" />
+    </definition>
 </tiles-definitions>
 

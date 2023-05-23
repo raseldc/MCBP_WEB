@@ -10,6 +10,7 @@ import com.wfp.lmmis.applicant.model.Applicant;
 import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
+import com.wfp.lmmis.report.data.AncReportDataByLocation;
 import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
 import com.wfp.lmmis.report.data.DoubleDippingReportData;
@@ -111,6 +112,11 @@ public class ApplicantServiceImpl implements ApplicantService {
     @Override
     public List<ApplicantReportDataByLocation> getApplicantSummaryReportData(Map parameter) {
         return this.applicantDao.getApplicantSummaryReportData(parameter);
+    }
+
+    @Override
+    public List<AncReportDataByLocation> getANCApplicantSummaryReportData(Map parameter) {
+        return this.applicantDao.getANCApplicantSummaryReportData(parameter);
     }
 
     @Override
@@ -216,5 +222,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     public ApplicantAncInformation getAncInformationByApplicantId(int applicantId) {
         return applicantDao.getAncInformationByApplicantId(applicantId);
+    }
+
+    public List<ApplicantReportData> getAncReportData(Map parameter) {
+        return applicantDao.getAncReportData(parameter);
     }
 }

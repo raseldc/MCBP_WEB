@@ -332,14 +332,18 @@ public class UpazilaVerificationController {
 //ja.put("<a href=\"" + request.getContextPath() + "/applicant/viewApplicant/" + applicant.getId() + "\" ><span class=\"glyphicon glyphicon-edit\"></span></a>");
                 String viewDetails = localizer.getLocalizedText("viewDetails", LocaleContextHolder.getLocale());
                 String ancStatus = "Not Check";
+                String btnCss = "bg-blue";
                 if (applicant.getAncStatus() == null) {
                     ancStatus = "en".equals(locale.getLanguage()) ? "Not Check" : "যাচাই করা হয়নি";
+                    btnCss = "bg-blue";
                 } else if (applicant.getAncStatus() == 1) {
                     ancStatus = "en".equals(locale.getLanguage()) ? "Accepted" : "সফল";
+                    btnCss = "bg-green";
                 } else if (applicant.getAncStatus() == 2) {
                     ancStatus = "en".equals(locale.getLanguage()) ? "Reject" : "বাতিল";
+                    btnCss = "bg-red";
                 }
-                ja.put("<button type=\"button\" id=\"btnAncVerify\" class=\"btn bg-blue\" onclick=ancCardCheck(" + applicant.getId() + ") ><span class=\"glyphicon glyphicon-search\">&nbsp;</span>" + ancStatus + "</button>");
+                ja.put("<button type=\"button\" id=\"btnAncVerify\" class=\"btn " + btnCss + "\" onclick=ancCardCheck(" + applicant.getId() + ") ><span class=\"glyphicon glyphicon-search\">&nbsp;</span>" + ancStatus + "</button>");
                 ja.put("<a href=#" + " onclick=loadApplicant(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"></span></a>");
 
                 //ja.put("<a href=#" + " onclick=ancCardCheck(" + applicant.getId() + ") title=\"" + viewDetails + "\"><span class=\"glyphicon glyphicon-eye-open\"> </span>" + ancStatus + "</a>");

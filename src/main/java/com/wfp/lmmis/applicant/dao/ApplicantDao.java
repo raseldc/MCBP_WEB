@@ -9,9 +9,9 @@ import com.wfp.lmmis.applicant.model.Applicant;
 import com.wfp.lmmis.applicant.model.ApplicantAncInformation;
 import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
+import com.wfp.lmmis.report.data.AncReportDataByLocation;
 import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
-import com.wfp.lmmis.report.data.BeneficiaryReportData;
 import com.wfp.lmmis.report.data.DoubleDippingReportData;
 import com.wfp.lmmis.selection.controller.AncVerificationRespose;
 import com.wfp.lmmis.types.ApplicationStatus;
@@ -124,4 +124,8 @@ public interface ApplicantDao {
     public int updateApplicantAncStatus(AncVerificationRespose ancVerificationRespose);
 
     public ApplicantAncInformation getAncInformationByApplicantId(int applicantId);
+
+    public List<AncReportDataByLocation> getANCApplicantSummaryReportData(Map parameter);
+
+    public List<ApplicantReportData> getAncReportData(Map parameter);
 }

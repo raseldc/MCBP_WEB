@@ -68,6 +68,8 @@ public class ApplicantReportData {
     private String oldConceptionDuration;
     private String oldConceptionTerm;
 
+    private String ancStatus;
+
     public ApplicantReportData(String benName, BigInteger nationalID, String fatherName, String motherName, String spouseName, Calendar dob, Integer mobileNo, String division, String district, String upazila, String union, String factory, String address) {
         this.benName = benName;
         this.nationalID = nationalID.toString();
@@ -250,6 +252,40 @@ public class ApplicantReportData {
         this.accountNo = accountNo;
         this.factory = factory;
         this.creationDate = creationDate;
+    }
+
+    public ApplicantReportData(String benName, BigInteger nationalID, String fatherName, String motherName, String spouseName, Calendar dob, Integer mobileNo,
+            String division, String district, String upazila, String union, String wardNo, String address, String bankName, String branchName, String pOBranch,
+            String mobileBankingProviderName, String accountNo, ApplicationStatus applicationStatus, String factory, Calendar creationDate, Integer ancStatusInt) {
+        this.benName = benName;
+        this.nationalID = nationalID.toString();
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.spouseName = spouseName;
+        this.dob = dob;
+        this.mobileNo = mobileNo != null ? "0" + mobileNo : "";
+        this.division = division;
+        this.district = district;
+        this.upazila = upazila;
+        this.union = union;
+        this.wardNo = wardNo;
+        this.address = address;
+        this.applicationStatus = applicationStatus;
+        this.bankName = bankName;
+        this.branchName = branchName;
+        this.pOBranch = pOBranch;
+        this.mobileBankingProviderName = mobileBankingProviderName;
+        this.accountNo = accountNo;
+        this.factory = factory;
+        this.creationDate = creationDate;
+        ancStatusInt = ancStatusInt == null ? 0 : ancStatusInt;
+        if (ancStatusInt == 0) {
+            this.ancStatus = "Not Check";
+        } else if (ancStatusInt == 1) {
+            this.ancStatus = "Success";
+        } else if (ancStatusInt == 0) {
+            this.ancStatus = "Failed";
+        }
     }
 
     public ApplicantReportData() {
@@ -745,6 +781,14 @@ public class ApplicantReportData {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAncStatus() {
+        return ancStatus;
+    }
+
+    public void setAncStatus(String ancStatus) {
+        this.ancStatus = ancStatus;
     }
 
 }

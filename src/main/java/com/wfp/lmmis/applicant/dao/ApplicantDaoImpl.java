@@ -12,6 +12,7 @@ import com.wfp.lmmis.enums.ApplicantType;
 import com.wfp.lmmis.enums.StageType;
 import com.wfp.lmmis.exception.ExceptionWrapper;
 import com.wfp.lmmis.payroll.model.PaymentCycle;
+import com.wfp.lmmis.report.data.AncReportDataByLocation;
 import com.wfp.lmmis.report.data.ApplicantReportData;
 import com.wfp.lmmis.report.data.ApplicantReportDataByLocation;
 
@@ -860,6 +861,203 @@ public class ApplicantDaoImpl implements ApplicantDao {
         }
     }
 
+    @Override
+    public List<ApplicantReportData> getAncReportData(Map parameter) {
+        try {
+            Integer fiscalYearId = (Integer) parameter.get("fiscalYearId");
+            Integer divisionId = (Integer) parameter.get("divisionId");
+            Integer districtId = (Integer) parameter.get("districtId");
+            Integer upazilaId = (Integer) parameter.get("upazilaId");
+            Integer unionId = (Integer) parameter.get("unionId");
+            Integer wardNo = (Integer) parameter.get("ward");
+            System.out.println("unionId = " + unionId);
+            String locale = parameter.get("locale") != null ? (parameter.get("locale").toString()) : null;
+
+            ApplicantType applicantType = (ApplicantType) parameter.get("applicantType");
+            ApplicantStatus applicantStatus = (ApplicantStatus) parameter.get("applicantStatus");
+            Integer bgmeaId = (Integer) parameter.get("bgmeaId");
+            Integer bkmeaId = (Integer) parameter.get("bkmeaId");
+            Calendar startDate = parameter.get("startDate") != null ? (Calendar) parameter.get("startDate") : null;
+            Calendar endDate = parameter.get("endDate") != null ? (Calendar) parameter.get("endDate") : null;
+            String query;
+            if ("bn".equals(locale)) {
+                query = "select new com.wfp.lmmis.report.data.ApplicantReportData(a.fullNameInBangla, a.nid, a.fatherName, a.motherName, a.spouseName, a.dateOfBirth,"
+                        + "a.mobileNo, a.presentDivision.nameInBangla, a.presentDistrict.nameInBangla, a.presentUpazila.nameInBangla, a.presentUnion.nameInBangla,a.presentWardNo, a.presentAddressLine1, "
+                        + "COALESCE(bk.nameInBangla, null), br.nameInBangla, pob.nameInBangla, COALESCE(mbp.nameInBangla, null), a.accountNo, a.applicationStatus, f.nameInBangla, a.creationDate, a.ancStatus) "
+                        + "from Applicant a LEFT JOIN a.bank bk LEFT JOIN a.branch br LEFT JOIN a.postOfficeBranch pob LEFT JOIN a.mobileBankingProvider mbp LEFT JOIN a.factory f where 0 = 0 ";
+            } else {
+                query = "select new com.wfp.lmmis.report.data.ApplicantReportData(a.fullNameInEnglish, a.nid, a.fatherName, a.motherName, a.spouseName, a.dateOfBirth,"
+                        + "a.mobileNo, a.presentDivision.nameInEnglish, a.presentDistrict.nameInEnglish, a.presentUpazila.nameInEnglish, a.presentUnion.nameInEnglish,a.presentWardNo, a.presentAddressLine1, "
+                        + "COALESCE(bk.nameInEnglish, null), br.nameInEnglish, pob.nameInEnglish, COALESCE(mbp.nameInEnglish, null), a.accountNo, a.applicationStatus, f.nameInEnglish, a.creationDate, a.ancStatus) "
+                        + "from Applicant a LEFT JOIN a.bank bk LEFT JOIN a.branch br LEFT JOIN a.postOfficeBranch pob LEFT JOIN a.mobileBankingProvider mbp LEFT JOIN a.factory f where 0 = 0 ";
+            }
+
+            if (fiscalYearId != null && fiscalYearId != 0) {
+                query += " AND a.fiscalYear.id = " + fiscalYearId;
+            }
+            query += " AND a.applicantType = " + applicantType.ordinal();
+            if (applicantStatus != null && applicantStatus == ApplicantStatus.NEW) {
+                query += " AND a.applicationStatus <=4";
+            }
+            if (startDate != null) {
+                query += " AND a.creationDate >= :startDate";
+            }
+            if (endDate != null) {
+                query += " AND a.creationDate <= :endDate";
+            }
+            switch (applicantType) {
+                case UNION:
+                case MUNICIPAL:
+                case CITYCORPORATION:
+                    if (divisionId != null) {
+                        query += " and a.presentDivision.id=" + divisionId;
+                    }
+                    if (districtId != null) {
+                        query += " and a.presentDistrict.id=" + districtId;
+                    }
+                    if (upazilaId != null) {
+                        query += " and a.presentUpazila.id=" + upazilaId;
+                    }
+                    if (unionId != null) {
+                        query += " and a.presentUnion.id=" + unionId;
+                    }
+                    if (wardNo != null) {
+                        query += " and a.presentWardNo=" + wardNo;
+                    }
+                    break;
+                case BGMEA:
+                    if (bgmeaId != null) {
+                        query += " AND a.factory.id=" + bgmeaId;
+                    }
+                    break;
+                case BKMEA:
+                    if (bkmeaId != null) {
+                        query += " AND a.factory.id=" + bkmeaId;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            query += " order by a.presentDivision.nameInEnglish, a.presentDistrict.nameInEnglish, a.presentUpazila.nameInEnglish, a.presentUnion.nameInEnglish,a.presentWardNo";
+//            query += " , a.fullNameInEnglish";
+            query += " , a.creationDate";
+            System.out.println("query = " + query);
+            Query queryObject = sessionFactory.getCurrentSession().createQuery(query);
+            if (startDate != null) {
+                queryObject.setParameter("startDate", startDate);
+            }
+            if (endDate != null) {
+                queryObject.setParameter("endDate", endDate);
+            }
+            List<ApplicantReportData> list = queryObject.list();
+            if (applicantType == ApplicantType.UNION || applicantType == ApplicantType.MUNICIPAL || applicantType == ApplicantType.CITYCORPORATION) {
+                for (ApplicantReportData applicantReportData : list) {
+                    if ("bn".equals(locale)) {
+                        applicantReportData.setNationalID(CommonUtility.getNumberInBangla(applicantReportData.getNationalID()));
+                        applicantReportData.setMobileNo(CommonUtility.getNumberInBangla(applicantReportData.getMobileNo()));
+                        if (divisionId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("বিভাগ : " + applicantReportData.getDivision() + ",   জেলা : " + applicantReportData.getDistrict() + ",   উপজেলা : " + applicantReportData.getUpazila() + ",   ইউনিয়ন : " + applicantReportData.getUnion());
+                            } else {
+                                applicantReportData.setUnion("বিভাগ : " + applicantReportData.getDivision() + ",   জেলা : " + applicantReportData.getDistrict() + ",   জেলা/উপজেলা : " + applicantReportData.getUpazila() + ",   সিটি কর্পোরেশন/পৌরসভা : " + applicantReportData.getUnion() + ", ওয়ার্ড " + CommonUtility.getNumberInBangla(applicantReportData.getWardNo()));
+                            }
+                        } else if (districtId == null) {
+                            //beneficiaryReportData.setDistrict("জেলা : " + beneficiaryReportData.getDistrict()); // district bangla text appended
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("জেলা : " + applicantReportData.getDistrict() + ",   উপজেলা : " + applicantReportData.getUpazila() + ",   ইউনিয়ন : " + applicantReportData.getUnion());
+
+                            } else {
+                                applicantReportData.setUnion("জেলা : " + applicantReportData.getDistrict() + ",   জেলা/উপজেলা : " + applicantReportData.getUpazila() + ",   সিটি কর্পোরেশন/পৌরসভা : " + applicantReportData.getUnion() + ", ওয়ার্ড " + CommonUtility.getNumberInBangla(applicantReportData.getWardNo()));
+                            }
+                        } else if (upazilaId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("উপজেলা : " + applicantReportData.getUpazila() + ",   ইউনিয়ন : " + applicantReportData.getUnion());
+                            } else {
+                                applicantReportData.setUnion("জেলা/উপজেলা : " + applicantReportData.getUpazila() + ",   সিটি কর্পোরেশন/পৌরসভা : " + applicantReportData.getUnion() + ", ওয়ার্ড " + CommonUtility.getNumberInBangla(applicantReportData.getWardNo()));
+                            }
+                        } else if (unionId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("ইউনিয়ন : " + applicantReportData.getUnion()); // uinon bangla text appended
+                            } else {
+                                applicantReportData.setUnion("???? ?????????/?????? : " + applicantReportData.getUnion() + ", ওয়ার্ড " + CommonUtility.getNumberInBangla(applicantReportData.getWardNo())); // uinon bangla text appended
+                            }
+                        }
+
+                    } else {
+                        if (divisionId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("Division : " + applicantReportData.getDivision() + ",   District : " + applicantReportData.getDistrict() + ",   Upazila : " + applicantReportData.getUpazila() + ",   Union : " + applicantReportData.getUnion());
+                            } else {
+                                applicantReportData.setUnion("Division : " + applicantReportData.getDivision() + ",   District : " + applicantReportData.getDistrict() + ",   District/Upazila : " + applicantReportData.getUpazila() + ",   City Corporation/Municipal : " + applicantReportData.getUnion() + ", WardNo:" + applicantReportData.getWardNo());
+
+                            }
+                        } else if (districtId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("District : " + applicantReportData.getDistrict() + ",   Upazila : " + applicantReportData.getUpazila() + ",   Union : " + applicantReportData.getUnion());
+                            } else {
+                                applicantReportData.setUnion("District : " + applicantReportData.getDistrict() + ",   District/Upazila : " + applicantReportData.getUpazila() + ",   City Corporation/Municipal : " + applicantReportData.getUnion() + ", WardNo:" + applicantReportData.getWardNo());
+
+                            }
+                        } else if (upazilaId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("Upazila : " + applicantReportData.getUpazila() + ",   Union : " + applicantReportData.getUnion());
+                            } else {
+                                applicantReportData.setUnion("District/Upazila : " + applicantReportData.getUpazila() + ",   City Corporation/Municipal : " + applicantReportData.getUnion() + ", WardNo:" + applicantReportData.getWardNo());
+                            }
+                        } else if (unionId == null) {
+                            if (applicantType == ApplicantType.UNION) {
+                                applicantReportData.setUnion("Union : " + applicantReportData.getUnion()); // uinon bangla text appended
+                            } else {
+                                applicantReportData.setUnion("City Corporation/Municipal : " + applicantReportData.getUnion() + ", WardNo:" + applicantReportData.getWardNo()); // uinon bangla text appended
+                            }
+                        }
+                    }
+                    if (applicantReportData.getBankName() != null) {
+                        applicantReportData.setPaymentProviderName(applicantReportData.getBankName());
+                    }
+                    if (applicantReportData.getMobileBankingProviderName() != null) {
+                        applicantReportData.setPaymentProviderName(applicantReportData.getMobileBankingProviderName());
+                    }
+                    if (applicantReportData.getpOBranch() != null) {
+                        String postOffice = "bn".equals(locale) ? "পোস্ট অফিস" : "Post Office";
+                        applicantReportData.setPaymentProviderName(postOffice);
+                        applicantReportData.setBranchName(applicantReportData.getpOBranch());
+                    }
+                    int index = applicantReportData.getCreationDate().get(Calendar.MONTH);
+                    applicantReportData.setMonth(getMonthForInt(index, locale));
+                }
+            } else {
+                for (ApplicantReportData applicantReportData : list) {
+                    if ("bn".equals(locale)) {
+                        applicantReportData.setNationalID(CommonUtility.getNumberInBangla(applicantReportData.getNationalID()));
+                        applicantReportData.setMobileNo(CommonUtility.getNumberInBangla(applicantReportData.getMobileNo()));
+                        applicantReportData.setUnion("প্রতিষ্ঠান : " + applicantReportData.getFactory());
+                    } else {
+                        applicantReportData.setUnion("Factory : " + applicantReportData.getFactory());
+                    }
+                    if (applicantReportData.getBankName() != null) {
+                        applicantReportData.setPaymentProviderName(applicantReportData.getBankName());
+                    }
+                    if (applicantReportData.getMobileBankingProviderName() != null) {
+                        applicantReportData.setPaymentProviderName(applicantReportData.getMobileBankingProviderName());
+                    }
+                    if (applicantReportData.getpOBranch() != null) {
+                        String postOffice = "bn".equals(locale) ? "পোস্ট অফিস" : "Post Office";
+                        applicantReportData.setPaymentProviderName(postOffice);
+                        applicantReportData.setBranchName(applicantReportData.getpOBranch());
+                    }
+                    int index = applicantReportData.getCreationDate().get(Calendar.MONTH);
+                    applicantReportData.setMonth(getMonthForInt(index, locale));
+                }
+            }
+
+            return list;
+        } catch (NumberFormatException | HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     String getMonthForInt(int num, String locale) {
         String month = "wrong";
         String[] months;
@@ -1003,6 +1201,123 @@ public class ApplicantDaoImpl implements ApplicantDao {
                 }
             }
             return list;
+        } catch (NumberFormatException | HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<AncReportDataByLocation> getANCApplicantSummaryReportData(Map parameter) {
+        try {
+            Integer fiscalYearId = (Integer) parameter.get("fiscalYearId");
+            Integer divisionId = (Integer) parameter.get("divisionId");
+            Integer districtId = (Integer) parameter.get("districtId");
+            Integer upazilaId = (Integer) parameter.get("upazilaId");
+            Integer unionId = (Integer) parameter.get("unionId");
+            String locale = parameter.get("locale") != null ? (parameter.get("locale").toString()) : null;
+            ApplicantStatus applicantStatus = (ApplicantStatus) parameter.get("applicantStatus");
+            ApplicantType applicantType = (ApplicantType) parameter.get("applicantType");
+
+            Integer bgmeaId = (Integer) parameter.get("bgmeaId");
+            Integer bkmeaId = (Integer) parameter.get("bkmeaId");
+
+            Calendar startDate = parameter.get("startDate") != null ? (Calendar) parameter.get("startDate") : null;
+            Calendar endDate = parameter.get("endDate") != null ? (Calendar) parameter.get("endDate") : null;
+
+            System.out.println("locale = " + locale);
+            String groupByQuery = "";
+
+            String isBan = "bn".equals(locale) ? ",d.name_in_english division,di.name_in_bangla district,"
+                    + "up.name_in_bangla upazila, un.name_in_bangla `union`" : ",d.name_in_english division,di.name_in_english district,up.name_in_english upazila , un.name_in_english `union`";
+            String query = "SELECT COUNT(1) applicantTotal,\n"
+                    + "SUM( case\n"
+                    + "when a.anc_status = 1 then 1\n"
+                    + "ELSE 0\n"
+                    + "END) ancCheckSuccess,\n"
+                    + "SUM( case\n"
+                    + "when a.anc_status =2 then 1\n"
+                    + "ELSE 0\n"
+                    + "END) ancCheckFailed,\n"
+                    + "SUM( case\n"
+                    + "when a.anc_status IS null or a.anc_status = 0 then 1\n"
+                    + "ELSE 0\n"
+                    + "END) ancCheckNo\n"
+                    + isBan
+                    + " FROM applicant a"
+                    + " JOIN division d ON a.present_division_id = d.id\n"
+                    + " JOIN district di ON a.present_district_id = di.id\n"
+                    + " JOIN upazila up ON a.present_upazila_id = up.id\n"
+                    + " JOIN unions un ON a.present_union_id = un.id ";
+
+            query += " where a.applicant_type = " + applicantType.ordinal();
+            if (fiscalYearId != null && fiscalYearId != 0) {
+                query += " AND a.fiscal_year_id = " + fiscalYearId;
+            }
+            groupByQuery = " GROUP BY  d.name_in_english,di.name_in_english,up.name_in_english, un.name_in_english";
+
+            switch (applicantType) {
+                case UNION:
+                case MUNICIPAL:
+                case CITYCORPORATION:
+                    if (divisionId != null) {
+                        query += " and a.present_division_id=" + divisionId;
+                    }
+                    if (districtId != null) {
+                        query += " and a.present_district_id=" + districtId;
+                    }
+                    if (upazilaId != null) {
+                        query += " and a.present_upazila_id=" + upazilaId;
+                    }
+                    if (unionId != null) {
+                        query += " and a.present_union_id=" + unionId;
+                    }
+                    if (!groupByQuery.equals("")) {
+                        query += groupByQuery;
+                    }
+
+                    break;
+                case BGMEA:
+                    if (bgmeaId == null) {
+                        query += " GROUP BY a.factory_id";
+                    }
+                    break;
+                case BKMEA:
+                    if (bkmeaId == null) {
+                        query += " GROUP BY a.factory_id";
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            List<AncReportDataByLocation> ancReportDataByLocations = sessionFactory.getCurrentSession().createSQLQuery(query)
+                    .addScalar("applicantTotal", StringType.INSTANCE)
+                    .addScalar("ancCheckSuccess", StringType.INSTANCE)
+                    .addScalar("ancCheckFailed", StringType.INSTANCE)
+                    .addScalar("ancCheckNo", StringType.INSTANCE)
+                    .addScalar("division", StringType.INSTANCE)
+                    .addScalar("district", StringType.INSTANCE)
+                    .addScalar("upazila", StringType.INSTANCE)
+                    .addScalar("union", StringType.INSTANCE)
+                    .setResultTransformer(Transformers.aliasToBean(AncReportDataByLocation.class)).list();
+
+            Integer total = 0;
+            for (AncReportDataByLocation ancReportDataByLocation : ancReportDataByLocations) {
+                System.out.println("applicantReportDataByLocation = " + ancReportDataByLocation.getDivision());
+                total += Integer.parseInt(ancReportDataByLocation.getApplicantTotal());
+                if ("bn".equals(locale)) {
+                    ancReportDataByLocation.setApplicantTotal(CommonUtility.getNumberInBangla(ancReportDataByLocation.getApplicantTotal()));
+                    ancReportDataByLocation.setUnionTotal(CommonUtility.getNumberInBangla(ancReportDataByLocation.getUnionTotal()));
+                    ancReportDataByLocation.setGrandTotal(CommonUtility.getNumberInBangla(total.toString()));
+                    ancReportDataByLocation.setAncCheckSuccess(CommonUtility.getNumberInBangla(ancReportDataByLocation.getAncCheckSuccess()));
+                    ancReportDataByLocation.setAncCheckFailed(CommonUtility.getNumberInBangla(ancReportDataByLocation.getAncCheckFailed()));
+                    ancReportDataByLocation.setAncCheckNo(CommonUtility.getNumberInBangla(ancReportDataByLocation.getAncCheckNo()));
+                } else {
+                    ancReportDataByLocation.setGrandTotal(total.toString());
+                }
+            }
+            return ancReportDataByLocations;
         } catch (NumberFormatException | HibernateException e) {
             e.printStackTrace();
             return null;
